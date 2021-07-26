@@ -1,6 +1,12 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Hello from "../pages/Hello";
+import Authenticate from "../pages/Authenticate";
+import Dashboard from "../pages/Dashboard";
+import PatientManagement from "../pages/PatientManagement";
+import SiteManagement from "../pages/SiteManagement";
+import TeamManagement from "../pages/TeamManagement";
+import TrialManagement from "../pages/TrialManagement";
 
 export default function AppRouter() {
   return (
@@ -17,26 +23,26 @@ export default function AppRouter() {
         {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
         <Switch>
-          <Route path='/patientManagement'>
-
-          </Route>
-          <Route path='/siteManagement'>
-
-          </Route>
-          <Route path='/trialManagement'>
-
-          </Route>
-          <Route path='/teamManagement'>
-
-          </Route>
           <Route path='/authenticate'>
-
+            <Authenticate />
           </Route>
           <Route path='/dashboard'>
-            
+            <Dashboard />
+          </Route>
+          <Route path='/patientManagement'>
+            <PatientManagement />
+          </Route>
+          <Route path='/siteManagement'>
+            <SiteManagement />
+          </Route>
+          <Route path='/teamManagement'>
+            <TeamManagement />
+          </Route>
+          <Route path='/trialManagement'>
+            <TrialManagement />
           </Route>
           <Route path='/'>
-              <Hello />
+            <Hello />
           </Route>
         </Switch>
       </div>
