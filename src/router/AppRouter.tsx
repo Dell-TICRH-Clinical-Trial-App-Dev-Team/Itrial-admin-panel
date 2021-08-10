@@ -19,6 +19,8 @@ export default function AppRouter() {
           <ul>
             <li>
               <Link to="/">Home</Link>
+              <span> </span>
+              <Link to="/authenticate">Authenticate</Link>
             </li>
             <li>
               <AuthenticationButton></AuthenticationButton>
