@@ -2,6 +2,10 @@ import { createTheme } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
+    // TODO: These values need to be adjusted to color swatch in figma
+    background: {
+      default: "#F4F7F9"
+    },
     primary: {
       main: "#2C698D",
       light: "#D5E1E8",
