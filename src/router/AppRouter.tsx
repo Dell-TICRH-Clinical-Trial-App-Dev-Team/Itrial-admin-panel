@@ -11,7 +11,7 @@ import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients";
 import Sites from "../pages/Sites";
 import Teams from "../pages/Teams";
-import Trials from "../pages/Trials";
+import Trials from "../pages/Trials/Trials";
 
 export default function AppRouter() {
   return (
