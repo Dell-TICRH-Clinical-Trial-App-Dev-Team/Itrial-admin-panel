@@ -2,12 +2,16 @@ import React, {FC} from 'react';
 import {makeStyles} from "@material-ui/core";
 import SearchBar from "./SearchBar";
 import {Theme} from "@material-ui/core/styles";
+import InfoHeading from "./Cards/InfoHeading";
 
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
-        backgroundColor: theme.palette.background.default
+        backgroundColor: theme.palette.background.default,
     },
+    body: {
+        margin: "0 7.4vw"
+    }
 }));
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -27,15 +31,13 @@ const TabPanel: FC<TabPanelProps> = ({children, value, index, ...other}) => {
         >
             {value === index && (
                 <div className={classes.root} >
-                    <SearchBar />
-                    <div>
-                        <div>Trial name</div>
-                        <div>Start</div>
-                        <div>Completion date</div>
-                        <div>Endpoints</div>
-                        <div>Status</div>
+                    <div className={classes.body}>
+                        <SearchBar />
+                        <div >
+                            <InfoHeading />
+                            <div>{children}</div>
+                        </div>
                     </div>
-                    <div>{children}</div>
                 </div>
             )}
         </div>
