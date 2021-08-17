@@ -1,5 +1,6 @@
 import React from 'react';
 import TrialTabs from "./TrialTabs";
+import Paper from "@material-ui/core/Paper";
 import {makeStyles, Theme} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({

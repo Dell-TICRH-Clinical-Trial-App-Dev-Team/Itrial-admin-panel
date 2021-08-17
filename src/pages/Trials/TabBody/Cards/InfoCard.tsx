@@ -1,13 +1,29 @@
-import React from 'react'
+import React from 'react';
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography";
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core";
 import {Theme} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
-    section: {
-        // border: "1px solid black"
+    paper: {
+        display: "flex",
+        width: "100%",
+        padding: "10px 0",
+        borderRadius: "6px",
+        margin: "4px 0"
     },
+    section: {
+         // border: "1px solid black"
+    },
+    name: {
+        marginLeft: "24px"
+    },
+    status: {
+        display: "flex"
+    }
 }));
 
 interface CardProps {
@@ -22,31 +38,37 @@ const InfoCard: React.FC<CardProps> = ({name, startDate, completionDate, endpoin
     const classes = useStyles();
     return (
         <Grid container>
-            <Grid item className={classes.section} xs={4}>
-                <Typography variant="h6" >
-                    {name}
-                </Typography>
-            </Grid>
-            <Grid item className={classes.section} xs={2}>
-                <Typography variant="h6" >
-                    {startDate}
-                </Typography>
-            </Grid>
-            <Grid item className={classes.section} xs={2}>
-                <Typography variant="h6" >
-                    {completionDate}
-                </Typography>
-            </Grid>
-            <Grid item className={classes.section} xs={2}>
-                <Typography variant="h6" >
-                    {endpoints}
-                </Typography>
-            </Grid>
-            <Grid item className={classes.section} xs={2}>
-                <Typography variant="h6" >
-                    {status}
-                </Typography>
-            </Grid>
+            <Paper className={classes.paper}>
+                <Grid item className={classes.section} xs={4}>
+                    <Typography variant="h6" className={classes.name}>
+                        {name}
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.section} xs={2}>
+                    <Typography variant="h6" >
+                        {startDate}
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.section} xs={2}>
+                    <Typography variant="h6" >
+                        {completionDate}
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.section} xs={2}>
+                    <Typography variant="h6" >
+                        {endpoints}
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.section} xs={2}>
+                    <div className={classes.status}>
+                        <Typography variant="h6" >
+                            {status}
+                        </Typography>
+                        <KeyboardArrowRightIcon  />
+                    </div>
+
+                </Grid>
+            </Paper>
         </Grid>
     )
 }
