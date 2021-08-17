@@ -5,6 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from "./TabBody/TabPanel";
 import Button from "@material-ui/core/Button";
+import InfoCards from "./TabBody/Cards/InfoCards";
+
+//FIXME: Replace with real data
+import dummyData from "./dummyData.json"
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -34,7 +38,7 @@ const Trials = () => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-               All
+              <InfoCards data={dummyData}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Active
