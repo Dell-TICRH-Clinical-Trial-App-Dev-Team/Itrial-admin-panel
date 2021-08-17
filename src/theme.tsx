@@ -27,6 +27,10 @@ const theme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
+    h1: {
+      fontSize: "38px",
+      color: "#2C698D"
+    },
     h6: {
       color: "#2C698D",
       fontSize: "16px",

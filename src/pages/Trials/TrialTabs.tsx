@@ -13,8 +13,15 @@ import dummyData from "./dummyData.json"
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.default,
     },
+    appBar: {
+        boxShadow: "none",
+        backgroundColor: "white",
+    },
+    tabs: {
+        backgroundColor: "white"
+    }
 }));
 
 
@@ -29,8 +36,15 @@ const Trials = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+            <AppBar position="static" className={classes.appBar}>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="simple tabs example"
+                    className={classes.tabs}
+                    indicatorColor="primary"
+                    textColor="primary"
+                >
                     <Tab label="All"  />
                     <Tab label="Active"  />
                     <Tab label="Pending"  />
