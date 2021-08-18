@@ -17,10 +17,16 @@ interface item {
 }
 
 interface DataProps {
-    data: item[];
+    data: item[],
+    statusShow: string
 }
 
-const InfoCards: React.FC<DataProps> = ({data}) => {
+const InfoCards: React.FC<DataProps> = ({data, statusShow}) => {
+    //filter status type
+    if(statusShow !== "all") {
+        data = data.filter((item: item) => item.status === statusShow)
+    }
+
     return(
         <div>
             {
@@ -35,7 +41,6 @@ const InfoCards: React.FC<DataProps> = ({data}) => {
                     />
                 ))
             }
-
         </div>
     )
 };

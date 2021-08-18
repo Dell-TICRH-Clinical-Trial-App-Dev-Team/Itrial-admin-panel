@@ -8,7 +8,20 @@ import Button from "@material-ui/core/Button";
 import InfoCards from "./TabBody/Cards/InfoCards";
 
 //FIXME: Replace with real data
-import dummyData from "./dummyData.json"
+import data from "./dummyData.json"
+
+interface item {
+    name: string,
+    startDate: string,
+    completionDate: string,
+    endpoints: number,
+    status: string,
+    id: number
+}
+
+let dummyData : item[] = data;
+
+
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -23,6 +36,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: "white"
     }
 }));
+
+const all : string = "all";
+const active : string = "active";
+const pending : string = "pending";
 
 
 
@@ -52,19 +69,19 @@ const Trials = () => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-              <InfoCards data={dummyData}/>
+              <InfoCards data={dummyData} statusShow={"all"}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Active
+                <InfoCards data={dummyData} statusShow={"active"}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Pending
+                <InfoCards data={dummyData} statusShow={"pending"}/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-               Ending
+                <InfoCards data={dummyData} statusShow={"ending"}/>
             </TabPanel>
         </div>
     );
-}
+};
 
 export default Trials;

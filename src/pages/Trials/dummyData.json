@@ -4,7 +4,7 @@
     "startDate": "6/12/21",
     "completionDate": "7/12/21",
     "endpoints": 14,
-    "status": "active",
+    "status": "pending",
     "id": 1
   },
   {
@@ -16,11 +16,19 @@
     "id": 2
   },
   {
-    "name": "Joe",
+    "name": "joe",
     "startDate": "12/12/12",
     "completionDate": "4/22/20",
     "endpoints": 1,
     "status": "pending",
     "id": 3
+  },
+  {
+    "name": "Doe",
+    "startDate": "12/12/12",
+    "completionDate": "4/22/20",
+    "endpoints": 1,
+    "status": "ending",
+    "id": 4
   }
 ]
