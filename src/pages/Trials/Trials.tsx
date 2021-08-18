@@ -3,6 +3,8 @@ import TrialTabs from "./TrialTabs";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles, Theme} from "@material-ui/core/styles";
 
+
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
         height: "64px",
@@ -12,14 +14,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     heading: {
         height: "100px",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        padding: "20px 0 0 7.4vw"
     }
 }));
 
+//
 const Trials = () => {
     const classes = useStyles();
     return (
         <div>
+            {/*FIXME: Add App Bar*/}
             <div className={classes.appBar}>App bar</div>
             <div className={classes.heading}>
                 <Typography variant="h1">

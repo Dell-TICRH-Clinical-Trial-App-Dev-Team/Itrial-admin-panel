@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import {Theme} from "@material-ui/core/styles";
 import InfoHeading from "./Cards/InfoHeading";
 
-
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         backgroundColor: theme.palette.background.default,
@@ -13,14 +13,19 @@ const useStyles = makeStyles((theme: Theme) => ({
         margin: "0 7.4vw"
     }
 }));
+
+//typescript
 interface TabPanelProps {
     children?: React.ReactNode;
     index: any;
     value: any;
 }
 
+
+//wrapper for each individual tab content
 const TabPanel: FC<TabPanelProps> = ({children, value, index, ...other}) => {
     const classes = useStyles();
+
     return (
         <div
             role="tabpanel"
@@ -29,6 +34,7 @@ const TabPanel: FC<TabPanelProps> = ({children, value, index, ...other}) => {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
+            {/* Only displays if on the correct tab index */}
             {value === index && (
                 <div className={classes.root} >
                     <div className={classes.body}>

@@ -3,8 +3,7 @@ import {makeStyles, Theme} from "@material-ui/core/styles";
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from "@material-ui/icons/Search"
 
-// import SearchIcon from '@material-ui/icons/Search';
-
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         margin: "10px 0",
@@ -21,8 +20,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }));
 
+//search bar above trial entry
 const SearchBar : React.FC = () => {
     const classes = useStyles();
+
     return (
         <div className={classes.root}>
             <div >

@@ -1,12 +1,7 @@
 import React from 'react'
 import InfoCard from "./InfoCard";
 
-/*
-*
-* Change props depending of type of data input
-*
-* */
-
+//typescript
 interface item {
     name: string,
     startDate: string,
@@ -21,8 +16,9 @@ interface DataProps {
     statusShow: string
 }
 
+//Maps through each data entry and returns data in <InfoCard />
 const InfoCards: React.FC<DataProps> = ({data, statusShow}) => {
-    //filter status type
+    //filter according to status type
     if(statusShow !== "all") {
         data = data.filter((item: item) => item.status === statusShow)
     }
@@ -30,6 +26,7 @@ const InfoCards: React.FC<DataProps> = ({data, statusShow}) => {
     return(
         <div>
             {
+                //FIXME: Adapt to actual data format
                 data.map((item: item) => (
                     <InfoCard
                         name={item.name}

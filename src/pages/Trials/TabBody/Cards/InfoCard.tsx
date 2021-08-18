@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core";
 import {Theme} from "@material-ui/core/styles";
 
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     paper: {
         display: "flex",
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }));
 
+//typescript
 interface CardProps {
     name: string,
     startDate: string,
@@ -34,6 +36,8 @@ interface CardProps {
     status: string
 
 }
+
+//Represents singular data entry
 const InfoCard: React.FC<CardProps> = ({name, startDate, completionDate, endpoints, status}) => {
     const classes = useStyles();
     return (
@@ -66,7 +70,6 @@ const InfoCard: React.FC<CardProps> = ({name, startDate, completionDate, endpoin
                         </Typography>
                         <KeyboardArrowRightIcon  />
                     </div>
-
                 </Grid>
             </Paper>
         </Grid>

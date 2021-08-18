@@ -4,12 +4,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from "./TabBody/TabPanel";
-import Button from "@material-ui/core/Button";
 import InfoCards from "./TabBody/Cards/InfoCards";
 
 //FIXME: Replace with real data
 import data from "./dummyData.json"
 
+//data typescript, adapt for actual data
 interface item {
     name: string,
     startDate: string,
@@ -21,8 +21,7 @@ interface item {
 
 let dummyData : item[] = data;
 
-
-
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         flexGrow: 1,
@@ -31,28 +30,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
         boxShadow: "none",
         backgroundColor: "white",
+        paddingLeft: "7.4vw"
     },
     tabs: {
         backgroundColor: "white"
     }
 }));
 
-const all : string = "all";
-const active : string = "active";
-const pending : string = "pending";
-
-
-
-const Trials = () => {
+//Entry point for the Tabs
+const TrialTabs= () => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
+    //shifts tab display
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
 
     return (
         <div className={classes.root}>
+            {/* Tab header */}
             <AppBar position="static" className={classes.appBar}>
                 <Tabs
                     value={value}
@@ -68,6 +65,8 @@ const Trials = () => {
                     <Tab label="Ending"  />
                 </Tabs>
             </AppBar>
+
+            {/* Content per tab */}
             <TabPanel value={value} index={0}>
               <InfoCards data={dummyData} statusShow={"all"}/>
             </TabPanel>
@@ -84,4 +83,4 @@ const Trials = () => {
     );
 };
 
-export default Trials;
+export default TrialTabs;

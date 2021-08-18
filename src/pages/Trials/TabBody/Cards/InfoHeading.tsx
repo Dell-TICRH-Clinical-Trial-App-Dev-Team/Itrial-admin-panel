@@ -4,11 +4,14 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core";
 import {Theme} from "@material-ui/core/styles";
 
+//styling
 const useStyles = makeStyles((theme: Theme) => ({
     section: {
         // border: "1px solid black"
     },
 }));
+
+// Displays table heading of trials
 const InfoHeading: React.FC = () => {
     const classes = useStyles();
     return (
