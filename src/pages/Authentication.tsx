@@ -14,7 +14,7 @@ const Authentication = () => {
   const [message, setMessage] = useState("");
   const serverUrl = env.REACT_APP_SERVER_URL;
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, user } = useAuth0();
 
   const callApi = async () => {
     try {
@@ -31,8 +31,9 @@ const Authentication = () => {
   const callSecureApi = async () => {
     try {
       const token = await getAccessTokenSilently();
+      console.log(token);
 
-      const response = await fetch(`${serverUrl}/auth`, {
+      const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
