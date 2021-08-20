@@ -6,22 +6,20 @@ import Tab from "@material-ui/core/Tab";
 import TabPanel from "./TabBody/TabPanel";
 import InfoCards from "./TabBody/Cards/InfoCards";
 
-//FIXME: Replace with real data
-import data from "./dummyData.json";
+// FIXME: Replace with real data
+import dummyTrialData from "./dummyTrialData";
 
-//data typescript, adapt for actual data
-interface item {
+export interface trialCardDTO {
   name: string;
   startDate: string;
   completionDate: string;
   patientsCompleted: string;
   status: string;
-  id: number;
+  id?: number;
 }
 
-let dummyData: item[] = data;
+let dummyData: trialCardDTO[] = dummyTrialData;
 
-//styling
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -37,22 +35,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-//Entry point for the Tabs
 const TrialTabs = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [tabDisplaying, setTab] = React.useState(0);
 
-  //shifts tab display
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+  const handleChange = (_event, newTab: number) => {
+    setTab(newTab);
   };
 
   return (
     <div className={classes.root}>
-      {/* Tab header */}
       <AppBar position="static" className={classes.appBar}>
         <Tabs
-          value={value}
+          value={tabDisplaying}
           onChange={handleChange}
           aria-label="simple tabs example"
           className={classes.tabs}
@@ -66,17 +61,16 @@ const TrialTabs = () => {
         </Tabs>
       </AppBar>
 
-      {/* Content per tab */}
-      <TabPanel value={value} index={0}>
+      <TabPanel value={tabDisplaying} index={0}>
         <InfoCards data={dummyData} statusShow={"all"} />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={tabDisplaying} index={1}>
         <InfoCards data={dummyData} statusShow={"active"} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={tabDisplaying} index={2}>
         <InfoCards data={dummyData} statusShow={"pending"} />
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel value={tabDisplaying} index={3}>
         <InfoCards data={dummyData} statusShow={"ended"} />
       </TabPanel>
     </div>
