@@ -11,8 +11,8 @@ import dummyTrialData from "./dummyTrialData";
 
 export interface trialCardDTO {
   name: string;
-  startDate: string;
-  completionDate: string;
+  startDate?: string;
+  completionDate?: string;
   patientsCompleted: string;
   status: string;
   id?: number;

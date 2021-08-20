@@ -31,7 +31,6 @@ const InfoCard: React.FC<trialCardDTO> = ({
   status,
 }) => {
   const classes = useStyles();
-
   return (
     <Grid container data-testid="info-card">
       <Paper className={classes.paper}>

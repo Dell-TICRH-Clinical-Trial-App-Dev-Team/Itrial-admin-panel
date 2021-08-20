@@ -21,8 +21,8 @@ const InfoCards: React.FC<props> = ({ data, statusShow }) => {
         data.map((trial: trialCardDTO) => (
           <InfoCard
             name={trial.name}
-            startDate={trial.startDate}
-            completionDate={trial.completionDate}
+            startDate={trial.startDate ? trial.startDate : "--/--/--"}
+            completionDate={trial.completionDate ? trial.completionDate : "--/--/--"}
             patientsCompleted={trial.patientsCompleted}
             status={trial.status}
             key={trial.id}

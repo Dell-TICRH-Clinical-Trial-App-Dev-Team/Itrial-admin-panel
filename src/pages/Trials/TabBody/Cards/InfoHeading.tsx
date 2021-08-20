@@ -4,31 +4,24 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  section: {
-    // border: "1px solid black"
-  },
-}));
-
-const InfoHeading: React.FC = () => {
-  const classes = useStyles();
+const InfoHeading = () => {
 
   return (
     <Grid container>
-      <Grid item className={classes.section} xs={4}>
+      <Grid item xs={4}>
         <Typography variant="subtitle1">Trial name</Typography>
       </Grid>
-      <Grid item className={classes.section} xs={2}>
+      <Grid item xs={2}>
         <Typography variant="subtitle1">Start date</Typography>
       </Grid>
-      <Grid item className={classes.section} xs={2}>
+      <Grid item xs={2}>
         <Typography variant="subtitle1">Completion data</Typography>
       </Grid>
-      <Grid item className={classes.section} xs={2}>
+      <Grid item  xs={2}>
         <Typography variant="subtitle1">Patients Completed</Typography>
       </Grid>
-      <Grid item className={classes.section} xs={2}>
-        <Typography variant="subtitle1">Status</Typography>
+      <Grid item xs={2}>
+        <Typography variant="subtitle2">Status</Typography>
       </Grid>
     </Grid>
   );

@@ -1,8 +1,6 @@
 const dummyTrialData = [
   {
     name: "Sam",
-    startDate: "6/12/21",
-    completionDate: "7/12/21",
     patientsCompleted: "0/341",
     status: "pending",
     id: 1,
@@ -10,7 +8,6 @@ const dummyTrialData = [
   {
     name: "Tom",
     startDate: "4/30/20",
-    completionDate: "7/10/80",
     patientsCompleted: "107/257",
     status: "active",
     id: 2,
@@ -20,7 +17,7 @@ const dummyTrialData = [
     startDate: "12/12/12",
     completionDate: "4/22/20",
     patientsCompleted: "0/441",
-    status: "pending",
+    status: "ended",
     id: 3,
   },
   {
