@@ -2,9 +2,9 @@ import React from "react";
 
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import SearchBar from "../TabBody/SearchBar";
-import InfoCards from "../TabBody/Cards/InfoCards";
-import TrialTabs from "../TrialTabs";
+import SearchBar from "./TabBody/SearchBar";
+import InfoCards from "./TabBody/Cards/InfoCards";
+import TrialTabs from "./TrialTabs";
 
 // Clicking through tabs changes status info cards status shown
 describe("clicking tabs for trial states", () => {
@@ -129,16 +129,15 @@ describe("Filtering of trial info cards", () => {
       status: "ended",
       id: 4,
     },
-
   ];
 
   test("tab 'all' should display each data entry", () => {
     const { getAllByTestId } = render(
       <InfoCards data={dummyData} statusShow={"all"} />
     );
-    const cardName = getAllByTestId("trial-name").map(li => li.textContent);
+    const cardName = getAllByTestId("trial-name").map((li) => li.textContent);
 
-    const actualName = dummyData.map(x => x.name);
+    const actualName = dummyData.map((x) => x.name);
 
     expect(cardName).toEqual(actualName);
   });
@@ -148,13 +147,19 @@ describe("Filtering of trial info cards", () => {
       <InfoCards data={dummyData} statusShow={"active"} />
     );
 
-    const cardStatus = getAllByTestId("trial-status").map(li => li.textContent);
+    const cardStatus = getAllByTestId("trial-status").map(
+      (li) => li.textContent
+    );
 
-    const areAllActive = cardStatus.every(status => status === "active");
+    const areAllActive = cardStatus.every((status) => status === "active");
     expect(areAllActive).toBe(true);
 
-    const cardCompletionDate = getAllByTestId("trial-completion-date").map(li => li.textContent)
-    const areCompletionDateEmpty = cardCompletionDate.every(date => date === "--/--/--")
+    const cardCompletionDate = getAllByTestId("trial-completion-date").map(
+      (li) => li.textContent
+    );
+    const areCompletionDateEmpty = cardCompletionDate.every(
+      (date) => date === "--/--/--"
+    );
     expect(areCompletionDateEmpty).toBe(true);
   });
 
@@ -163,18 +168,27 @@ describe("Filtering of trial info cards", () => {
       <InfoCards data={dummyData} statusShow={"pending"} />
     );
 
-    const cardStatus = getAllByTestId("trial-status").map(li => li.textContent);
+    const cardStatus = getAllByTestId("trial-status").map(
+      (li) => li.textContent
+    );
 
-    const areAllPending = cardStatus.every(status => status === "pending");
+    const areAllPending = cardStatus.every((status) => status === "pending");
     expect(areAllPending).toBe(true);
 
-
-    const cardCompletionDate = getAllByTestId("trial-completion-date").map(li => li.textContent)
-    const areCompletionDateEmpty = cardCompletionDate.every(date => date === "--/--/--")
+    const cardCompletionDate = getAllByTestId("trial-completion-date").map(
+      (li) => li.textContent
+    );
+    const areCompletionDateEmpty = cardCompletionDate.every(
+      (date) => date === "--/--/--"
+    );
     expect(areCompletionDateEmpty).toBe(true);
 
-    const cardStartDate = getAllByTestId("trial-start-date").map(li => li.textContent)
-    const areStartDateEmpty = cardStartDate.every(date => date === "--/--/--")
+    const cardStartDate = getAllByTestId("trial-start-date").map(
+      (li) => li.textContent
+    );
+    const areStartDateEmpty = cardStartDate.every(
+      (date) => date === "--/--/--"
+    );
     expect(areStartDateEmpty).toBe(true);
   });
 
@@ -183,9 +197,11 @@ describe("Filtering of trial info cards", () => {
       <InfoCards data={dummyData} statusShow={"ended"} />
     );
 
-    const cardStatus = getAllByTestId("trial-status").map(li => li.textContent);
+    const cardStatus = getAllByTestId("trial-status").map(
+      (li) => li.textContent
+    );
 
-    const areAllEnding = cardStatus.every(status => status === "ended");
+    const areAllEnding = cardStatus.every((status) => status === "ended");
     expect(areAllEnding).toBe(true);
   });
 });
