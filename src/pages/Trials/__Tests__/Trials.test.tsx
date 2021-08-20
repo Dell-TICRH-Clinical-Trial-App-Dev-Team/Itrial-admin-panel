@@ -53,7 +53,7 @@ describe("clicking tabs for trial states", () => {
   });
 
   // randomize
-  test("mixture of clicks focuses on correct tab", () => {
+  test("mixture of clicks should focus on correct tab", () => {
     const { getByTestId, getByRole } = render(<TrialTabs />);
     const allTab = getByTestId("all-tab");
     const activeTab = getByTestId("active-tab");
@@ -129,9 +129,10 @@ describe("Filtering of trial info cards", () => {
       status: "ended",
       id: 4,
     },
+
   ];
 
-  test("tab 'all' displays each data entry", () => {
+  test("tab 'all' should display each data entry", () => {
     const { getAllByTestId } = render(
       <InfoCards data={dummyData} statusShow={"all"} />
     );
@@ -142,7 +143,7 @@ describe("Filtering of trial info cards", () => {
     expect(cardName).toEqual(actualName);
   });
 
-  test("tab 'active' displays 'active' data entry", () => {
+  test("tab 'active' should display 'active' data entry and add placeholder for completion date ", () => {
     const { getAllByTestId } = render(
       <InfoCards data={dummyData} statusShow={"active"} />
     );
@@ -151,9 +152,13 @@ describe("Filtering of trial info cards", () => {
 
     const areAllActive = cardStatus.every(status => status === "active");
     expect(areAllActive).toBe(true);
+
+    const cardCompletionDate = getAllByTestId("trial-completion-date").map(li => li.textContent)
+    const areCompletionDateEmpty = cardCompletionDate.every(date => date === "--/--/--")
+    expect(areCompletionDateEmpty).toBe(true);
   });
 
-  test("tab 'pending' displays 'pending' data entry", () => {
+  test("tab 'pending' should display 'pending' data entry and add placeholder for completion and start date", () => {
     const { getAllByTestId } = render(
       <InfoCards data={dummyData} statusShow={"pending"} />
     );
@@ -162,6 +167,15 @@ describe("Filtering of trial info cards", () => {
 
     const areAllPending = cardStatus.every(status => status === "pending");
     expect(areAllPending).toBe(true);
+
+
+    const cardCompletionDate = getAllByTestId("trial-completion-date").map(li => li.textContent)
+    const areCompletionDateEmpty = cardCompletionDate.every(date => date === "--/--/--")
+    expect(areCompletionDateEmpty).toBe(true);
+
+    const cardStartDate = getAllByTestId("trial-start-date").map(li => li.textContent)
+    const areStartDateEmpty = cardStartDate.every(date => date === "--/--/--")
+    expect(areStartDateEmpty).toBe(true);
   });
 
   test("tab 'ended' displays 'ended' data entry", () => {
