@@ -33,7 +33,7 @@ const InfoHeading: React.FC = () => {
             </Grid>
             <Grid item className={classes.section} xs={2}>
                 <Typography variant="subtitle1">
-                   Endpoints
+                  Patients Completed
                 </Typography>
             </Grid>
             <Grid item className={classes.section} xs={2}>

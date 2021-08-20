@@ -28,8 +28,12 @@ const SearchBar : React.FC = () => {
         <div className={classes.root}>
             <div >
                 <InputBase
+                    data-testid="search"
                     placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
+                    inputProps={{
+                        'aria-label': 'search',
+                        'data-testid': 'search-content'
+                    }}
                     fullWidth={true}
                     endAdornment={<SearchIcon />}
                     classes={{

@@ -6,7 +6,7 @@ interface item {
     name: string,
     startDate: string,
     completionDate: string,
-    endpoints: number,
+    patientsCompleted: string,
     status: string,
     id: number
 }
@@ -32,7 +32,7 @@ const InfoCards: React.FC<DataProps> = ({data, statusShow}) => {
                         name={item.name}
                         startDate={item.startDate}
                         completionDate={item.completionDate}
-                        endpoints={item.endpoints}
+                        patientsCompleted={item.patientsCompleted}
                         status={item.status}
                         key={item.id}
                     />

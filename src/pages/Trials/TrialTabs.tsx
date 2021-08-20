@@ -14,7 +14,7 @@ interface item {
     name: string,
     startDate: string,
     completionDate: string,
-    endpoints: number,
+    patientsCompleted: string,
     status: string,
     id: number
 }
@@ -59,10 +59,10 @@ const TrialTabs= () => {
                     indicatorColor="primary"
                     textColor="primary"
                 >
-                    <Tab label="All"  />
-                    <Tab label="Active"  />
-                    <Tab label="Pending"  />
-                    <Tab label="Ending"  />
+                    <Tab label="All" data-testid="all-tab" />
+                    <Tab label="Active" data-testid="active-tab" />
+                    <Tab label="Pending" data-testid="pending-tab" />
+                    <Tab label="Ending" data-testid="ending-tab" />
                 </Tabs>
             </AppBar>
 

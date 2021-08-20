@@ -32,39 +32,39 @@ interface CardProps {
     name: string,
     startDate: string,
     completionDate: string,
-    endpoints: number,
+    patientsCompleted: string,
     status: string
 
 }
 
 //Represents singular data entry
-const InfoCard: React.FC<CardProps> = ({name, startDate, completionDate, endpoints, status}) => {
+const InfoCard: React.FC<CardProps> = ({name, startDate, completionDate, patientsCompleted, status}) => {
     const classes = useStyles();
     return (
-        <Grid container>
+        <Grid container data-testid="info-card">
             <Paper className={classes.paper}>
                 <Grid item className={classes.section} xs={4}>
-                    <Typography variant="h6" className={classes.name}>
+                    <Typography variant="h6" className={classes.name} data-testid="trial-name">
                         {name}
                     </Typography>
                 </Grid>
                 <Grid item className={classes.section} xs={2}>
-                    <Typography variant="h6" >
+                    <Typography variant="h6" data-testid="trial-start-date">
                         {startDate}
                     </Typography>
                 </Grid>
                 <Grid item className={classes.section} xs={2}>
-                    <Typography variant="h6" >
+                    <Typography variant="h6" data-testid="trial-completion-date">
                         {completionDate}
                     </Typography>
                 </Grid>
                 <Grid item className={classes.section} xs={2}>
-                    <Typography variant="h6" >
-                        {endpoints}
+                    <Typography variant="h6" data-testid="trial-patients-completed">
+                        {patientsCompleted}
                     </Typography>
                 </Grid>
                 <Grid item className={classes.section} xs={2}>
-                    <div className={classes.status}>
+                    <div className={classes.status} data-testid="trial-status">
                         <Typography variant="h6" >
                             {status}
                         </Typography>

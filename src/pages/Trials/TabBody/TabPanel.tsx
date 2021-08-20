@@ -32,6 +32,7 @@ const TabPanel: FC<TabPanelProps> = ({children, value, index, ...other}) => {
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
+            data-testid={`tab-${index}`}
             {...other}
         >
             {/* Only displays if on the correct tab index */}
