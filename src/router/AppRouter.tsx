@@ -26,7 +26,7 @@ export default function AppRouter() {
       {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
       <Switch>
-        <Route path="/authentication" component={Authentication} />
+        <Route path="/authenticate" component={Authentication} />
         <ProtectedRoute path="/trials" component={Trials} />
         <ProtectedRoute path="/sites" component={Sites} />
         <ProtectedRoute path="/teams" component={Teams} />

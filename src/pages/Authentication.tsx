@@ -1,13 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import env from "react-dotenv";
@@ -16,7 +9,7 @@ import Activate from "./AuthenticationPages/Activate";
 import Login from "./AuthenticationPages/Login";
 
 const Authentication = () => {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
 
   const [message, setMessage] = useState("");
   const serverUrl = env.REACT_APP_SERVER_URL;
