@@ -13,8 +13,8 @@ const Authentication = () => {
 
   const [message, setMessage] = useState("");
   const serverUrl = process.env.PROD
-    ? env.REACT_APP_SERVER_PROD_URL
-    : env.REACT_APP_SERVER_LOCAL_URL;
+    ? process.env.REACT_APP_SERVER_PROD_URL
+    : process.env.REACT_APP_SERVER_LOCAL_URL;
 
   const { getAccessTokenSilently, user } = useAuth0();
 
