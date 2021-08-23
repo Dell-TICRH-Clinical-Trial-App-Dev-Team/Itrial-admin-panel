@@ -12,6 +12,8 @@ const Authentication = () => {
   let { path } = useRouteMatch();
 
   const [message, setMessage] = useState("");
+  console.log(`PROD: ${process.env.PROD}`);
+  console.log(`ENV: ${process.env}`);
   const serverUrl = process.env.PROD
     ? process.env.REACT_APP_SERVER_PROD_URL
     : process.env.REACT_APP_SERVER_LOCAL_URL;
