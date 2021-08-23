@@ -3,8 +3,6 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import env from "react-dotenv";
-
 import Activate from "./AuthenticationPages/Activate";
 import Login from "./AuthenticationPages/Login";
 
@@ -12,11 +10,7 @@ const Authentication = () => {
   let { path } = useRouteMatch();
 
   const [message, setMessage] = useState("");
-  console.log(`PROD: ${process.env.PROD}`);
-  console.log(`ENV: ${process.env}`);
-  const serverUrl = process.env.PROD
-    ? process.env.REACT_APP_SERVER_PROD_URL
-    : process.env.REACT_APP_SERVER_LOCAL_URL;
+  const serverUrl = process.env.REACT_APP_SERVER_PROD_URL;
 
   const { getAccessTokenSilently, user } = useAuth0();
 
