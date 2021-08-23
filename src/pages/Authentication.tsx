@@ -12,7 +12,9 @@ const Authentication = () => {
   let { path } = useRouteMatch();
 
   const [message, setMessage] = useState("");
-  const serverUrl = env.REACT_APP_SERVER_URL;
+  const serverUrl = process.env.PROD
+    ? env.REACT_APP_SERVER_PROD_URL
+    : env.REACT_APP_SERVER_PROD_URL;
 
   const { getAccessTokenSilently, user } = useAuth0();
 
