@@ -10,14 +10,23 @@ import store from "./store";
 function App() {
   const { isLoading, user } = useAuth0();
 
+  //FIXME: delete
+  const handleClick = () => {
+    store.setUserInfo("superDad@superStrength.com");
+  };
+
+  const getInfo = () => {
+    let temp = JSON.stringify(store.getUserInfo, null, 2);
+    console.log(temp);
+  };
+
   if (isLoading) {
     return <Loading />;
   }
 
   if (user?.email) {
     let data = { email: user.email };
-    store.setUserInfo(data);
-    console.log(user);
+    // console.log(user);
   }
 
   return (
@@ -26,6 +35,8 @@ function App() {
         <CssBaseline />
         <AppRouter />
       </ThemeProvider>
+      <button onClick={handleClick}>Click me</button>
+      <button onClick={getInfo}>Get Info</button>
     </div>
   );
 }
