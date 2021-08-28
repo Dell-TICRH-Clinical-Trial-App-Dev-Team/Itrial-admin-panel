@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./components/loading";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,24 +9,18 @@ import store from "./store";
 
 function App() {
   const { isLoading, user } = useAuth0();
+  const [isUserInfo, setIsUserInfo] = useState(false);
 
-  //FIXME: delete
-  const handleClick = () => {
-    store.setUserInfo("superDad@superStrength.com");
-  };
-
-  const getInfo = () => {
-    let temp = JSON.stringify(store.getUserInfo, null, 2);
-    console.log(temp);
-  };
+  useEffect(() => {
+    if (user?.email && !isUserInfo) {
+      console.log("Here", Date.now());
+      store.setUserInfo(user.email);
+      setIsUserInfo(true);
+    }
+  });
 
   if (isLoading) {
     return <Loading />;
-  }
-
-  if (user?.email) {
-    let data = { email: user.email };
-    // console.log(user);
   }
 
   return (
@@ -35,8 +29,6 @@ function App() {
         <CssBaseline />
         <AppRouter />
       </ThemeProvider>
-      <button onClick={handleClick}>Click me</button>
-      <button onClick={getInfo}>Get Info</button>
     </div>
   );
 }

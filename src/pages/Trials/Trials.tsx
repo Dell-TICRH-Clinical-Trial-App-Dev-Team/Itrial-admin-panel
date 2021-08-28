@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import store from "../../store";
 import TrialTabs from "./TrialTabs";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, Theme } from "@material-ui/core/styles";
@@ -16,9 +17,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const DisplayUserInput = () => {
+  if (store.getUserInfo) {
+    return <div>{JSON.stringify(store.getUserInfo, null, 2)}</div>;
+  }
+  return <></>;
+};
+
 const Trials = () => {
   const classes = useStyles();
 
+  const handleClick = () => {
+    console.log(store.getUserInfo);
+  };
+
+  useEffect(() => {});
   return (
     <div>
       {/*FIXME: Add App Bar*/}
@@ -28,6 +41,8 @@ const Trials = () => {
         <Typography variant="h1">Trials</Typography>
       </div>
       <TrialTabs />
+      <DisplayUserInput />
+      <button onClick={handleClick}>GetUserINfo</button>
     </div>
   );
 };
