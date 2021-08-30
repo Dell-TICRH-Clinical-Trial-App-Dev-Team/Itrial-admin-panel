@@ -4,7 +4,7 @@ import Axios from "axios";
 interface User {
   name?: string;
   address?: string;
-  email: string;
+  email?: string;
   phoneNumber?: number;
   permissions?: string[];
   trials?: string[];
@@ -17,30 +17,41 @@ class UserInfo {
     email: "",
   };
 
+  infoFound = false;
+
   constructor() {
     makeAutoObservable(this);
   }
 
-  setUserInfo(userEmail, cccsId) {
+  async setUserInfo(userEmail, cccsId) {
     //Finds user info by email in specific cccs
     if (this.info.email !== userEmail) {
-      Axios.get(`http://localhost:8000/api/cccs/${cccsId}`).then((res) => {
-        let data = res.data;
-        data.teamMembers.forEach((id) => {
-          Axios.get(`http://localhost:8000/api/team-members/${id}`).then(
-            (res) => {
-              if (res.data.email === userEmail) {
-                this.info = res.data;
+      await Axios.get(`http://localhost:8000/api/cccs/${cccsId}`)
+        .then((res) => {
+          let data = res.data;
+          data.teamMembers.forEach((id) => {
+            Axios.get(`http://localhost:8000/api/team-members/${id}`).then(
+              (res) => {
+                if (res.data.email === userEmail) {
+                  this.info = res.data;
+                  this.infoFound = true;
+                  return;
+                }
               }
-            }
-          );
+            );
+          });
+        })
+        .catch(() => {
+          console.log("Invalid id for CCCS");
+          this.infoFound = false;
         });
-      });
     }
+
+    this.info.email = userEmail;
   }
 
   get getUserInfo() {
-    if (this.info.email !== "") {
+    if (!this.infoFound) {
       let data: User = {
         name: this.info.name,
         address: this.info.address,
