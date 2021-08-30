@@ -17,19 +17,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const DisplayUserInput = () => {
-  if (store.getUserInfo) {
-    return <div>{JSON.stringify(store.getUserInfo, null, 2)}</div>;
-  }
-  return <></>;
-};
-
 const Trials = () => {
   const classes = useStyles();
-
-  const handleClick = () => {
-    console.log(store.getUserInfo);
-  };
 
   useEffect(() => {});
   return (
@@ -41,8 +30,6 @@ const Trials = () => {
         <Typography variant="h1">Trials</Typography>
       </div>
       <TrialTabs />
-      <DisplayUserInput />
-      <button onClick={handleClick}>GetUserINfo</button>
     </div>
   );
 };

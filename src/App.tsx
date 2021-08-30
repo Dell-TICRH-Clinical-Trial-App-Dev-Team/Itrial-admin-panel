@@ -13,8 +13,8 @@ function App() {
 
   useEffect(() => {
     if (user?.email && !isUserInfo) {
-      console.log("Here", Date.now());
-      store.setUserInfo(user.email);
+      //FIXME: /api/cccs/:id, id is hardcoded. (also fix in store.test.tsx)
+      store.setUserInfo(user.email, "61269208a73cdc406c9641c4");
       setIsUserInfo(true);
     }
   });

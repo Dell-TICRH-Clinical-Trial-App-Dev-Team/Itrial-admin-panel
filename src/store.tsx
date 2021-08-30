@@ -21,32 +21,21 @@ class UserInfo {
     makeAutoObservable(this);
   }
 
-  //testing purposes
-  showOutput(res) {
-    // console.log(JSON.stringify(res, null, 2));
-    console.log("showing output", JSON.stringify(this.info, null, 2));
-  }
-
-  setUserInfo(userEmail) {
+  setUserInfo(userEmail, cccsId) {
     //Finds user info by email in specific cccs
     if (this.info.email !== userEmail) {
-      //FIXME: /api/cccs/:id, id is hardcoded.
-      Axios.get("http://localhost:8000/api/cccs/61269208a73cdc406c9641c4").then(
-        (res) => {
-          let data = res.data;
-          console.log("There", Date.now());
-          data.teamMembers.forEach((id) => {
-            Axios.get(`http://localhost:8000/api/team-members/${id}`).then(
-              (res) => {
-                if (res.data.email === userEmail) {
-                  this.info = res.data;
-                  this.showOutput(res.data);
-                }
+      Axios.get(`http://localhost:8000/api/cccs/${cccsId}`).then((res) => {
+        let data = res.data;
+        data.teamMembers.forEach((id) => {
+          Axios.get(`http://localhost:8000/api/team-members/${id}`).then(
+            (res) => {
+              if (res.data.email === userEmail) {
+                this.info = res.data;
               }
-            );
-          });
-        }
-      );
+            }
+          );
+        });
+      });
     }
   }
 
