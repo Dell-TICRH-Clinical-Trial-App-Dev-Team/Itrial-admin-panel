@@ -75,10 +75,6 @@ beforeAll(async () => {
     headers: axiosConfig,
     data: putData,
   });
-
-  await axios.get(`http://localhost:8000/api/cccs/${cccsId}`).then((res) => {
-    console.log(res.data);
-  });
 });
 
 describe("settingUserInfo and getUserInfo works with valid data", () => {
