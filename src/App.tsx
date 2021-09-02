@@ -13,11 +13,18 @@ function App() {
 
   useEffect(() => {
     if (user?.email && !isUserInfo) {
-      //FIXME: /api/cccs/:id, id is hardcoded. (also fix in store.test.tsx)
-      store.setUserInfo(user.email, "61269208a73cdc406c9641c4");
-      setIsUserInfo(true);
+      //   //FIXME: /api/cccs/:id, id is hardcoded. (also fix in store.test.tsx)
+      //   store.setUserInfo("tree@hipster.com", "61269208a73cdc406c9641c4");
+      //   setIsUserInfo(true);
     }
   });
+
+  const setClick = () => {
+    store.setUserInfo("tree@hipster.com", "61269208a73cdc406c9641c4");
+  };
+  const handleClick = () => {
+    console.log(store.getUserInfo);
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -29,6 +36,8 @@ function App() {
         <CssBaseline />
         <AppRouter />
       </ThemeProvider>
+      <button onClick={setClick}>Set</button>
+      <button onClick={handleClick}>CLICK ME</button>
     </div>
   );
 }

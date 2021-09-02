@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import store from "./store";
+import axios from "axios";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
@@ -77,18 +77,35 @@ beforeAll(async () => {
   });
 });
 
+jest.mock("axios");
+
 describe("settingUserInfo and getUserInfo works with valid data", () => {
-  test("setUserInfo should set valid data correctly", () => {
+  test("test async", async () => {
+    let user = {
+      permissions: [],
+      trials: [],
+      sites: [],
+      cccs: [],
+      _id: "61315d23895eba50fc17e275",
+      name: "Samuel",
+      address: "Greece",
+      email: "Greek@Yogurt.com",
+      phoneNumber: 9876543210,
+      __v: 0,
+    };
+
+    axios.get.mockResolvedValueOnce(user);
+
+    const result = await store.getCCCS();
+    console.log(result);
+
+    expect(result).toBe(user);
+  });
+  test("setUserInfo should set valid data correctly", async (done) => {
     expect(true).toBe(true);
   });
 
   test("getUserInfo should return correct data if valid", () => {});
-
-  //set data
-  //test each different team member --> get correct info
-  //test unknown team member --> infoFound = false & getUserInfo --> undefined
-  //
-  //test for invalid cccs
 });
 
 describe("settingUserInfo and getUserInfo catches invalid data", () => {

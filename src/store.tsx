@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import Axios from "axios";
 
-interface User {
+export interface User {
   name?: string;
   address?: string;
   email?: string;
@@ -23,22 +23,36 @@ class UserInfo {
     makeAutoObservable(this);
   }
 
+  async getCCCS(userEmail, cccsId) {
+    try {
+      return await Axios.get(`http://localhost:8000/api/cccs/${cccsId}`);
+    } catch (e) {
+      console.log("Error: ", e);
+      return {};
+    }
+  }
+
   async setUserInfo(userEmail, cccsId) {
     //Finds user info by email in specific cccs
     if (this.info.email !== userEmail) {
-      await Axios.get(`http://localhost:8000/api/cccs/${cccsId}`)
+      return Axios.get(`http://localhost:8000/api/cccs/${cccsId}`)
         .then((res) => {
           let data = res.data;
+          console.log(data);
           data.teamMembers.forEach((id) => {
-            Axios.get(`http://localhost:8000/api/team-members/${id}`).then(
-              (res) => {
+            console.log(id);
+            Axios.get(`http://localhost:8000/api/team-members/${id}`)
+              .then((res) => {
                 if (res.data.email === userEmail) {
+                  // console.log("Found!!!", res.data);
                   this.info = res.data;
+                  console.log("Info Found: ", res.data);
                   this.infoFound = true;
-                  return;
                 }
-              }
-            );
+              })
+              .catch((err) => {
+                console.log("Error: ", err);
+              });
           });
         })
         .catch(() => {
@@ -51,7 +65,8 @@ class UserInfo {
   }
 
   get getUserInfo() {
-    if (!this.infoFound) {
+    console.log(this.infoFound);
+    if (this.infoFound) {
       let data: User = {
         name: this.info.name,
         address: this.info.address,
