@@ -38,16 +38,16 @@ class UserInfo {
       return Axios.get(`http://localhost:8000/api/cccs/${cccsId}`)
         .then((res) => {
           let data = res.data;
-          console.log(data);
+
           data.teamMembers.forEach((id) => {
-            console.log(id);
             Axios.get(`http://localhost:8000/api/team-members/${id}`)
               .then((res) => {
                 if (res.data.email === userEmail) {
                   // console.log("Found!!!", res.data);
                   this.info = res.data;
-                  console.log("Info Found: ", res.data);
+                  // console.log("Info Found: ", res.data);
                   this.infoFound = true;
+                  return;
                 }
               })
               .catch((err) => {
