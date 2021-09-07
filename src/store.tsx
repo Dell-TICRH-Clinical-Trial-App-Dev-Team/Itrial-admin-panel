@@ -23,6 +23,11 @@ class UserInfo {
     makeAutoObservable(this);
   }
 
+  reset() {
+    this.info = { email: "" };
+    this.infoFound = false;
+  }
+
   async getCCCS(userEmail, cccsId) {
     try {
       return await Axios.get(`http://localhost:8000/api/cccs/${cccsId}`);
@@ -39,16 +44,15 @@ class UserInfo {
         .then((res) => {
           let data = res.data;
 
-          data.teamMembers.forEach((id) => {
+          data.teamMembers.some((id) => {
             Axios.get(`http://localhost:8000/api/team-members/${id}`)
               .then((res) => {
                 if (res.data.email === userEmail) {
-                  // console.log("Found!!!", res.data);
                   this.info = res.data;
-                  // console.log("Info Found: ", res.data);
                   this.infoFound = true;
-                  return;
+                  return true;
                 }
+                return false;
               })
               .catch((err) => {
                 console.log("Error: ", err);
