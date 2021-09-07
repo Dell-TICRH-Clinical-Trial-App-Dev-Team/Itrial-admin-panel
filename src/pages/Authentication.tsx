@@ -3,8 +3,6 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import env from "react-dotenv";
-
 import Activate from "./AuthenticationPages/Activate";
 import Login from "./AuthenticationPages/Login";
 
@@ -12,7 +10,7 @@ const Authentication = () => {
   let { path } = useRouteMatch();
 
   const [message, setMessage] = useState("");
-  const serverUrl = env.REACT_APP_SERVER_URL;
+  const serverUrl = process.env.REACT_APP_SERVER_LOCAL_URL;
 
   const { getAccessTokenSilently, user } = useAuth0();
 
@@ -31,7 +29,6 @@ const Authentication = () => {
   const callSecureApi = async () => {
     try {
       const token = await getAccessTokenSilently();
-      console.log(token);
 
       const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
         headers: {
