@@ -44,6 +44,8 @@ describe("testing setUserInfo", () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(3);
     expect(store.infoFound).toBe(true);
     expect(store.info).toEqual(dummyData.teamMembers[0]);
+
+    expect(store.getUserInfo).toEqual(dummyData.teamMembers[0]);
   });
 
   test("using valid data for setUserInfo (pt 2)", async () => {
@@ -59,6 +61,14 @@ describe("testing setUserInfo", () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(3);
     expect(store.infoFound).toBe(true);
     expect(store.info).toEqual(dummyData.teamMembers[1]);
+
+    expect(store.getUserInfo).toEqual(dummyData.teamMembers[1]);
+  });
+});
+
+describe("mobx store with invalid data", () => {
+  test("getUserInfo without calling setUserInfo first", () => {
+    expect(store.getUserInfo).toBe(undefined);
   });
 
   test("setUserInfo without email match", async () => {
@@ -75,5 +85,6 @@ describe("testing setUserInfo", () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(3);
     expect(store.info).toEqual({ email: "" });
+    expect(store.getUserInfo).toBe(undefined);
   });
 });
