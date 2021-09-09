@@ -22,7 +22,9 @@ const InfoCards: React.FC<props> = ({ data, statusShow }) => {
           <InfoCard
             name={trial.name}
             startDate={trial.startDate ? trial.startDate : "--/--/--"}
-            completionDate={trial.completionDate ? trial.completionDate : "--/--/--"}
+            completionDate={
+              trial.completionDate ? trial.completionDate : "--/--/--"
+            }
             patientsCompleted={trial.patientsCompleted}
             status={trial.status}
             key={trial.id}

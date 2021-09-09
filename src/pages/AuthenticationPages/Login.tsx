@@ -6,7 +6,7 @@ import {
   TextField,
   Button,
   Typography,
-  Link
+  Link,
 } from "@material-ui/core";
 // import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -17,7 +17,7 @@ const Login = () => {
     padding: 20,
     height: "70vh",
     width: 280,
-    margin: "20px auto"
+    margin: "20px auto",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
@@ -25,26 +25,26 @@ const Login = () => {
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <TextField
-          label='Username'
-          placeholder='Enter username'
+          label="Username"
+          placeholder="Enter username"
           fullWidth
           required
         />
         <TextField
-          label='Password'
-          placeholder='Enter password'
-          type='password'
+          label="Password"
+          placeholder="Enter password"
+          type="password"
           fullWidth
           required
         />
         <FormControlLabel
-          control={<Checkbox name='checkedB' color='primary' />}
-          label='Remember me'
+          control={<Checkbox name="checkedB" color="primary" />}
+          label="Remember me"
         />
         <Button
-          type='submit'
-          color='primary'
-          variant='contained'
+          type="submit"
+          color="primary"
+          variant="contained"
           style={btnstyle}
           fullWidth
         >

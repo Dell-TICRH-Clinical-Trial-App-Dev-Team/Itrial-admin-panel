@@ -69,24 +69,18 @@ class UserInfo {
   }
 
   get getUserInfo() {
-    console.log(this.infoFound);
-    if (this.infoFound) {
-      let data: User = {
-        name: this.info.name,
-        address: this.info.address,
-        email: this.info.email,
-        phoneNumber: this.info.phoneNumber,
-        permissions: this.info.permissions,
-        trials: this.info.trials,
-        sites: this.info.sites,
-        cccs: this.info.cccs,
-      };
-
-      console.log("Getter: ", data);
-      return data;
-    }
-
-    return undefined;
+    return this.infoFound
+      ? {
+          name: this.info.name,
+          address: this.info.address,
+          email: this.info.email,
+          phoneNumber: this.info.phoneNumber,
+          permissions: this.info.permissions,
+          trials: this.info.trials,
+          sites: this.info.sites,
+          cccs: this.info.cccs,
+        }
+      : undefined;
   }
 }
 
