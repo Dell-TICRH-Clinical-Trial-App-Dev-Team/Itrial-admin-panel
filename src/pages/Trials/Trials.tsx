@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import store from "../../store";
 import TrialTabs from "./TrialTabs";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, Theme } from "@material-ui/core/styles";
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Trials = () => {
   const classes = useStyles();
 
+  useEffect(() => {});
   return (
     <div>
       {/*FIXME: Add App Bar*/}
