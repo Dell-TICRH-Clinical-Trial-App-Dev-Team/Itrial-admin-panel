@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from "react";
-import { makeStyles } from "@material-ui/core";
-import SearchBar from "./SearchBar";
-import { Theme } from "@material-ui/core/styles";
+import { makeStyles, Theme } from "../../../styles/material-ui";
+import SearchBar from "../../../components/SearchBar";
 import InfoHeading from "./Cards/InfoHeading";
 
 const useStyles = makeStyles((theme: Theme) => ({

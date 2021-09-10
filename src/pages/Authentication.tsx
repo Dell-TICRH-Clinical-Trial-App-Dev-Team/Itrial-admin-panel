@@ -3,9 +3,6 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import Activate from "./AuthenticationPages/Activate";
-import Login from "./AuthenticationPages/Login";
-
 const Authentication = () => {
   let { path } = useRouteMatch();
 
@@ -38,14 +35,6 @@ const Authentication = () => {
 
   return (
     <div>
-      <Switch>
-        <Route path={`${path}/activate`}>
-          <Activate />
-        </Route>
-        <Route path={`${path}/login`}>
-          <Login />
-        </Route>
-      </Switch>
       <div className="container">
         <h1>Authentication</h1>
         <p>Test accessing the API</p>

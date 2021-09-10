@@ -1,9 +1,7 @@
 import React from "react";
-
-import { makeStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles";
-import { Site } from "../../../../api/models";
+import { makeStyles, Theme } from "@material-ui/core";
 import InfoCard from "./InfoCard";
+import { Site } from "../../../../api/models";
 
 const useStyles = makeStyles((theme: Theme) => ({
   body: {

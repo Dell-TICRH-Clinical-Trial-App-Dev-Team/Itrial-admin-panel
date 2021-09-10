@@ -1,7 +1,6 @@
 import React from "react";
+import { Typography, makeStyles, Theme } from "../../styles/material-ui";
 import TrialTabs from "./TrialTabs";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {

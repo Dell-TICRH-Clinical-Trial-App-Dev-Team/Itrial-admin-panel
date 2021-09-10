@@ -1,7 +1,7 @@
-import { makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { Trial } from "../../../../api/models";
+import { makeStyles, Theme } from "@material-ui/core";
 import InfoCard from "./InfoCard";
+import { Trial } from "../../../../api/models";
 
 const useStyles = makeStyles((theme: Theme) => ({
   body: {

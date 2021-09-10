@@ -2,11 +2,13 @@ import React from "react";
 
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import SearchBar from "./TabBody/SearchBar";
+
+import SearchBar from "../../components/SearchBar";
 import InfoCards from "./TabBody/Cards/InfoCards";
 import SiteTabs from "./SiteTabs";
-import dummySiteData from "./dummySiteData";
+
 import { Site } from "../../api/models";
+import dummySiteData from "./dummySiteData";
 
 describe("clicking tabs for site states", () => {
   test("clicking the 'all' tab should display all sites", () => {
