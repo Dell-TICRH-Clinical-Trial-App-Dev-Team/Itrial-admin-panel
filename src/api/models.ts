@@ -29,7 +29,7 @@ export interface TeamMember {
   phoneNumber: number;
   trials: Trial[];
   sites: Site[];
-  ccc: TeamMember;
+  ccc?: TeamMember;
   id: number;
 }
 

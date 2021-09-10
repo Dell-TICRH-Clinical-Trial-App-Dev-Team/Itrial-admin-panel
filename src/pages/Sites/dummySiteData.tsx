@@ -3,17 +3,52 @@ import { Site } from "../../api/models";
 const dummySiteData: Site[] = [
   {
     name: "Site1",
-    address: "111 Address Dr",
+    address: "Austin",
     trials: [],
-    teamMembers: [],
+    teamMembers: [
+      {
+        name: "Steve",
+        address: "123 People Dr",
+        email: "steve@gmail.com",
+        phoneNumber: 1234567890,
+        trials: [],
+        sites: [],
+        id: 1,
+      },
+      {
+        name: "Larry",
+        address: "456 People Dr",
+        email: "larry@gmail.com",
+        phoneNumber: 6691649240,
+        trials: [],
+        sites: [],
+        id: 2,
+      },
+    ],
     cccs: [],
     id: 1,
   },
   {
     name: "Site2",
-    address: "222 Address Dr",
-    trials: [],
-    teamMembers: [],
+    address: "Dallas",
+    trials: [
+      {
+        name: "trial 1",
+        status: "pending",
+        id: 1,
+      },
+    ],
+    teamMembers: [
+      {
+        name: "Steve",
+        address: "123 People Dr",
+        email: "steve@gmail.com",
+        phoneNumber: 1234567890,
+        trials: [],
+        sites: [],
+        id: 1,
+      },
+    ],
     cccs: [],
     id: 2,
   },
