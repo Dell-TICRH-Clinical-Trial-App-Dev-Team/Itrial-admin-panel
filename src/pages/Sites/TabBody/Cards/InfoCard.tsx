@@ -5,7 +5,7 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
-import { trialCardDTO } from "../../SiteTabs";
+import { SatelliteOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -18,17 +18,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   name: {
     marginLeft: "24px",
   },
-  status: {
+  activeTrials: {
     display: "flex",
   },
 }));
 
-const InfoCard: React.FC<trialCardDTO> = ({
+interface SiteCardDTO {
+  name: string;
+  siteId: string;
+  address: string;
+  members: number;
+  activeTrials: number;
+}
+
+const InfoCard: React.FC<SiteCardDTO> = ({
   name,
-  startDate,
-  completionDate,
-  patientsCompleted,
-  status,
+  siteId,
+  address,
+  members,
+  activeTrials,
 }) => {
   const classes = useStyles();
   return (
@@ -38,29 +46,31 @@ const InfoCard: React.FC<trialCardDTO> = ({
           <Typography
             variant="h6"
             className={classes.name}
-            data-testid="trial-name"
+            data-testid="site-name"
           >
             {name}
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Typography variant="h6" data-testid="trial-start-date">
-            {startDate}
+          <Typography variant="h6" data-testid="site-id">
+            {siteId}
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Typography variant="h6" data-testid="trial-completion-date">
-            {completionDate}
+          <Typography variant="h6" data-testid="site-location">
+            {address}
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Typography variant="h6" data-testid="trial-patients-completed">
-            {patientsCompleted}
+          <Typography variant="h6" data-testid="site-members">
+            {members}
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <div className={classes.status} data-testid="trial-status">
-            <Typography variant="h6">{status}</Typography>
+          <div className={classes.activeTrials}>
+            <Typography variant="h6" data-testid="site-active-trials">
+              {activeTrials}
+            </Typography>
             <KeyboardArrowRightIcon />
           </div>
         </Grid>

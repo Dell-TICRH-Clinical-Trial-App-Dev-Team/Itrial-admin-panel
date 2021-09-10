@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { makeStyles } from "@material-ui/core";
 import SearchBar from "./SearchBar";
 import { Theme } from "@material-ui/core/styles";
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   index: any;
   value: any;
 }

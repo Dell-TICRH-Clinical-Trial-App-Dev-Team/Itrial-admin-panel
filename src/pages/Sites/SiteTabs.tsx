@@ -3,18 +3,15 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+
 import TabPanel from "./TabBody/TabPanel";
 import InfoCards from "./TabBody/Cards/InfoCards";
 
+import { Site } from "../../api/models";
+
 // FIXME: Replace with real data
 import dummySiteData from "./dummySiteData";
-
-export interface siteCardDTO {
-  name: string;
-  teamMembers: TeamMember[];
-}
-
-let dummyData: siteCardDTO[] = dummySiteData;
+let dummySites: Site[] = dummySiteData;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -45,30 +42,20 @@ const SiteTabs = () => {
         <Tabs
           value={tabDisplaying}
           onChange={handleChange}
-          aria-label="simple tabs example"
           className={classes.tabs}
           indicatorColor="primary"
           textColor="primary"
         >
           <Tab label="All" data-testid="all-tab" />
           <Tab label="Active" data-testid="active-tab" />
-          <Tab label="Pending" data-testid="pending-tab" />
-          <Tab label="Ended" data-testid="ended-tab" />
+          <Tab label="Inactive" data-testid="inactive-tab" />
         </Tabs>
       </AppBar>
 
-      <TabPanel value={tabDisplaying} index={0}>
-        <InfoCards data={dummyData} statusShow={"all"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={1}>
-        <InfoCards data={dummyData} statusShow={"active"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={2}>
-        <InfoCards data={dummyData} statusShow={"pending"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={3}>
-        <InfoCards data={dummyData} statusShow={"ended"} />
-      </TabPanel>
+      <TabPanel value={tabDisplaying} index={0}></TabPanel>
+      <TabPanel value={tabDisplaying} index={1}></TabPanel>
+      <TabPanel value={tabDisplaying} index={2}></TabPanel>
+      <InfoCards sites={dummySites} statusShow={tabDisplaying} />
     </div>
   );
 };

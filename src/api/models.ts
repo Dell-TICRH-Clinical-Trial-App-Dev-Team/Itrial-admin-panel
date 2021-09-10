@@ -3,7 +3,7 @@ export interface Trial {
   startDate?: string;
   endDate?: string;
   endpointResults?: string;
-  protocols: TrialProtocol[];
+  protocols?: TrialProtocol[];
   blinded?: boolean;
   sites?: Site[];
   cccs?: TeamMember[];
@@ -19,6 +19,7 @@ export interface Site {
   trials: Trial[];
   teamMembers: TeamMember[];
   cccs: TeamMember[];
+  id: number;
 }
 
 export interface TeamMember {
@@ -29,6 +30,7 @@ export interface TeamMember {
   trials: Trial[];
   sites: Site[];
   ccc: TeamMember;
+  id: number;
 }
 
 export interface Endpoint {
@@ -41,6 +43,7 @@ export interface Endpoint {
   trial: Trial;
   group: Group;
   patient: Patient;
+  id: number;
 }
 
 export interface Patient {
@@ -56,6 +59,7 @@ export interface Patient {
   group: Group;
   site: Site;
   trial: Trial;
+  id: number;
 }
 
 export interface Group {
@@ -64,18 +68,21 @@ export interface Group {
   patients: Patient[];
   sites: Site[];
   trial: Trial;
+  id: number;
 }
 
 export interface TrialProtocol {
   name: string;
   interventions: Intervention[];
   endpointInfo?: EndpointInfo;
+  id: number;
 }
 
 export interface EndpointInfo {
   type: "quantitative" | "qualitative" | "file";
   range?: [string | number, string | number];
   url?: string;
+  id: number;
 }
 
 export interface Intervention {
@@ -84,6 +91,7 @@ export interface Intervention {
   amount?: string;
   timing: string[];
   groups: Group[];
+  id: number;
 }
 
 export {};

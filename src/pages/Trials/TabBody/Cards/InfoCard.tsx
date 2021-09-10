@@ -5,7 +5,7 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
-import { trialCardDTO } from "../../TrialTabs";
+import { StaticRouter } from "react-router";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -23,10 +23,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const InfoCard: React.FC<trialCardDTO> = ({
+interface TrialCardDTO {
+  name: string;
+  startDate: string;
+  endDate: string;
+  patientsCompleted: string;
+  status: string;
+}
+
+const InfoCard: React.FC<TrialCardDTO> = ({
   name,
   startDate,
-  completionDate,
+  endDate,
   patientsCompleted,
   status,
 }) => {
@@ -50,7 +58,7 @@ const InfoCard: React.FC<trialCardDTO> = ({
         </Grid>
         <Grid item xs={2}>
           <Typography variant="h6" data-testid="trial-completion-date">
-            {completionDate}
+            {endDate}
           </Typography>
         </Grid>
         <Grid item xs={2}>

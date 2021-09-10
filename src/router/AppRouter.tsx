@@ -17,6 +17,10 @@ export default function AppRouter() {
             <Link to="/">Home</Link>
             <span> </span>
             <Link to="/authenticate">Authenticate</Link>
+            <span> </span>
+            <Link to="/trials">Trials</Link>
+            <span> </span>
+            <Link to="/sites">Sites</Link>
           </li>
           <li>
             <AuthenticationButton></AuthenticationButton>

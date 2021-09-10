@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import TabPanel from "./TabBody/TabPanel";
 import InfoCards from "./TabBody/Cards/InfoCards";
+import { Trial } from "../../api/models";
 
 // FIXME: Replace with real data
 import dummyTrialData from "./dummyTrialData";
-import { Trial } from "../../api/models";
-
-let dummyData: Trial[] = dummyTrialData;
+let dummyTrials: Trial[] = dummyTrialData;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TrialTabs = () => {
   const classes = useStyles();
-  const [tabDisplaying, setTab] = React.useState(0);
+  const [tabDisplaying, setTab] = useState(0);
 
   const handleChange = (_event, newTab: number) => {
     setTab(newTab);
@@ -53,18 +52,11 @@ const TrialTabs = () => {
         </Tabs>
       </AppBar>
 
-      <TabPanel value={tabDisplaying} index={0}>
-        <InfoCards data={dummyData} statusShow={"all"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={1}>
-        <InfoCards data={dummyData} statusShow={"active"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={2}>
-        <InfoCards data={dummyData} statusShow={"pending"} />
-      </TabPanel>
-      <TabPanel value={tabDisplaying} index={3}>
-        <InfoCards data={dummyData} statusShow={"ended"} />
-      </TabPanel>
+      <TabPanel value={tabDisplaying} index={0} />
+      <TabPanel value={tabDisplaying} index={1} />
+      <TabPanel value={tabDisplaying} index={2} />
+      <TabPanel value={tabDisplaying} index={3} />
+      <InfoCards trials={dummyTrials} statusShow={tabDisplaying} />
     </div>
   );
 };
