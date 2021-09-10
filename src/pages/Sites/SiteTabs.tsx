@@ -7,10 +7,14 @@ import TabPanel from "./TabBody/TabPanel";
 import InfoCards from "./TabBody/Cards/InfoCards";
 
 // FIXME: Replace with real data
-import dummyTrialData from "./dummyTrialData";
-import { Trial } from "../../api/models";
+import dummySiteData from "./dummySiteData";
 
-let dummyData: Trial[] = dummyTrialData;
+export interface siteCardDTO {
+  name: string;
+  teamMembers: TeamMember[];
+}
+
+let dummyData: siteCardDTO[] = dummySiteData;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -27,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TrialTabs = () => {
+const SiteTabs = () => {
   const classes = useStyles();
   const [tabDisplaying, setTab] = React.useState(0);
 
@@ -69,4 +73,4 @@ const TrialTabs = () => {
   );
 };
 
-export default TrialTabs;
+export default SiteTabs;

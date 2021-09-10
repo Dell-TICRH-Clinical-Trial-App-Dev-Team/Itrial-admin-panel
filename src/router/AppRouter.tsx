@@ -4,7 +4,7 @@ import ProtectedRoute from "../auth/protected-route";
 import AuthenticationButton from "../components/authentication-button";
 import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients";
-import Sites from "../pages/Sites";
+import Sites from "../pages/Sites/Sites";
 import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
 
