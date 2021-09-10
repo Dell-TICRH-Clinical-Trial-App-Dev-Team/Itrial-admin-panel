@@ -4,15 +4,15 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import SearchBar from "./TabBody/SearchBar";
 import InfoCards from "./TabBody/Cards/InfoCards";
-import TrialTabs from "./SiteTabs";
+import SiteTabs from "./SiteTabs";
+import dummySiteData from "./dummySiteData";
+import { Site } from "../../api/models";
 
-// Clicking through tabs changes status info cards status shown
-describe("clicking tabs for trial states", () => {
-  test("clicking the 'all' tab should display active trials", () => {
-    const { getByTestId, getByRole } = render(<TrialTabs />);
+describe("clicking tabs for site states", () => {
+  test("clicking the 'all' tab should display all sites", () => {
+    const { getByTestId, getByRole } = render(<SiteTabs />);
     const allTab = getByTestId("all-tab");
 
-    // verify that 'all' tab is the default tab on page visit
     let selectedTab = getByRole("tab", { selected: true });
     expect(selectedTab).toEqual(allTab);
 
@@ -22,8 +22,8 @@ describe("clicking tabs for trial states", () => {
     expect(selectedTab).toEqual(allTab);
   });
 
-  test("clicking the 'active' tab should display active trials", () => {
-    const { getByTestId, getByRole } = render(<TrialTabs />);
+  test("clicking the 'active' tab should display active sites", () => {
+    const { getByTestId, getByRole } = render(<SiteTabs />);
     const activeTab = getByTestId("active-tab");
 
     fireEvent.click(activeTab);
@@ -32,57 +32,17 @@ describe("clicking tabs for trial states", () => {
     expect(activeTab).toEqual(selectedTab);
   });
 
-  test("clicking the 'pending' tab should display active trials", () => {
-    const { getByTestId, getByRole } = render(<TrialTabs />);
-    const pendingTab = getByTestId("pending-tab");
+  test("clicking the 'inactive' tab should display inactive sites", () => {
+    const { getByTestId, getByRole } = render(<SiteTabs />);
+    const inactiveTab = getByTestId("inactive-tab");
 
-    fireEvent.click(pendingTab);
-
-    let selectedTab = getByRole("tab", { selected: true });
-    expect(pendingTab).toEqual(selectedTab);
-  });
-
-  test("clicking the 'ended' tab should display active trials", () => {
-    const { getByTestId, getByRole } = render(<TrialTabs />);
-    const endedTab = getByTestId("ended-tab");
-
-    fireEvent.click(endedTab);
+    fireEvent.click(inactiveTab);
 
     let selectedTab = getByRole("tab", { selected: true });
-    expect(endedTab).toEqual(selectedTab);
-  });
-
-  // randomize
-  test("mixture of clicks should focus on correct tab", () => {
-    const { getByTestId, getByRole } = render(<TrialTabs />);
-    const allTab = getByTestId("all-tab");
-    const activeTab = getByTestId("active-tab");
-    const pendingTab = getByTestId("pending-tab");
-    const endedTab = getByTestId("ended-tab");
-    let selectedTab;
-
-    selectedTab = getByRole("tab", { selected: true });
-    expect(selectedTab).toEqual(allTab);
-    fireEvent.click(endedTab);
-
-    selectedTab = getByRole("tab", { selected: true });
-    expect(selectedTab).toEqual(endedTab);
-    fireEvent.click(allTab);
-
-    selectedTab = getByRole("tab", { selected: true });
-    expect(selectedTab).toEqual(allTab);
-    fireEvent.click(pendingTab);
-
-    selectedTab = getByRole("tab", { selected: true });
-    expect(selectedTab).toEqual(pendingTab);
-    fireEvent.click(activeTab);
-
-    selectedTab = getByRole("tab", { selected: true });
-    expect(selectedTab).toEqual(activeTab);
+    expect(inactiveTab).toEqual(selectedTab);
   });
 });
 
-// search bar successfully taking in info
 describe("Search bar in test list", () => {
   test("search bar content should change on input", () => {
     const { getByTestId } = render(<SearchBar />);
@@ -96,112 +56,47 @@ describe("Search bar in test list", () => {
   });
 });
 
-// info cards successfully filtering through cards according to status
-describe("Filtering of trial info cards", () => {
-  //FIXME: Change w dummy data resembling what actually receive
-  const dummyData = [
-    {
-      name: "Sam",
-      patientsCompleted: "0/341",
-      status: "pending",
-      id: 1,
-    },
-    {
-      name: "Tom",
-      startDate: "4/30/20",
-      patientsCompleted: "107/257",
-      status: "active",
-      id: 2,
-    },
-    {
-      name: "joe",
-      startDate: "12/12/12",
-      completionDate: "4/22/20",
-      patientsCompleted: "0/441",
-      status: "ended",
-      id: 3,
-    },
-    {
-      name: "Doe",
-      startDate: "1/1/31",
-      completionDate: "4/16/40",
-      patientsCompleted: "273/273",
-      status: "ended",
-      id: 4,
-    },
-  ];
+describe("Filtering of site info cards", () => {
+  const dummySites: Site[] = dummySiteData;
 
   test("tab 'all' should display each data entry", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"all"} />
+      <InfoCards sites={dummySites} statusShow={0} />
     );
-    const cardName = getAllByTestId("trial-name").map((li) => li.textContent);
+    const cardName = getAllByTestId("site-name").map((li) => li.textContent);
 
-    const actualName = dummyData.map((x) => x.name);
+    const actualName = dummySites.map((x) => x.name);
 
     expect(cardName).toEqual(actualName);
   });
 
-  test("tab 'active' should display 'active' data entry and add placeholder for completion date ", () => {
+  test("tab 'active' should display sites with at least 1 active trial", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"active"} />
+      <InfoCards sites={dummySites} statusShow={1} />
     );
 
-    const cardStatus = getAllByTestId("trial-status").map(
-      (li) => li.textContent
+    const sitesActiveTrials = getAllByTestId("site-active-trials").map(
+      (li) => li.textContent as string
     );
 
-    const areAllActive = cardStatus.every((status) => status === "active");
+    const areAllActive = sitesActiveTrials.every(
+      (activeTrials) => parseInt(activeTrials) > 0
+    );
     expect(areAllActive).toBe(true);
-
-    const cardCompletionDate = getAllByTestId("trial-completion-date").map(
-      (li) => li.textContent
-    );
-    const areCompletionDateEmpty = cardCompletionDate.every(
-      (date) => date === "--/--/--"
-    );
-    expect(areCompletionDateEmpty).toBe(true);
   });
 
-  test("tab 'pending' should display 'pending' data entry and add placeholder for completion and start date", () => {
+  test("tab 'inactive' should display sites with 0 active trials", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"pending"} />
+      <InfoCards sites={dummySites} statusShow={2} />
     );
 
-    const cardStatus = getAllByTestId("trial-status").map(
-      (li) => li.textContent
+    const sitesActiveTrials = getAllByTestId("site-active-trials").map(
+      (li) => li.textContent as string
     );
 
-    const areAllPending = cardStatus.every((status) => status === "pending");
-    expect(areAllPending).toBe(true);
-
-    const cardCompletionDate = getAllByTestId("trial-completion-date").map(
-      (li) => li.textContent
+    const areAllActive = sitesActiveTrials.every(
+      (activeTrials) => parseInt(activeTrials) == 0
     );
-    const areCompletionDateEmpty = cardCompletionDate.every(
-      (date) => date === "--/--/--"
-    );
-    expect(areCompletionDateEmpty).toBe(true);
-
-    const cardStartDate = getAllByTestId("trial-start-date").map(
-      (li) => li.textContent
-    );
-    const areStartDateEmpty = cardStartDate.every(
-      (date) => date === "--/--/--"
-    );
-    expect(areStartDateEmpty).toBe(true);
-  });
-
-  test("tab 'ended' displays 'ended' data entry", () => {
-    const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"ended"} />
-    );
-
-    const cardStatus = getAllByTestId("trial-status").map(
-      (li) => li.textContent
-    );
-
-    const areAllEnding = cardStatus.every((status) => status === "ended");
-    expect(areAllEnding).toBe(true);
+    expect(areAllActive).toBe(true);
   });
 });
