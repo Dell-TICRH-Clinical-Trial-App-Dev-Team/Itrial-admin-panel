@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ProtectedRoute from "../auth/protected-route";
 import AuthenticationButton from "../components/authentication-button";
+
 import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients/Patients";
-import Sites from "../pages/Sites";
+import Sites from "../pages/Sites/Sites";
 import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
 
@@ -17,6 +18,12 @@ export default function AppRouter() {
             <Link to="/">Home</Link>
             <span> </span>
             <Link to="/authenticate">Authenticate</Link>
+            <span> </span>
+            <Link to="/trials">Trials</Link>
+            <span> </span>
+            <Link to="/sites">Sites</Link>
+            <span> </span>
+            <Link to="/patients">Patients</Link>
           </li>
           <li>
             <AuthenticationButton></AuthenticationButton>

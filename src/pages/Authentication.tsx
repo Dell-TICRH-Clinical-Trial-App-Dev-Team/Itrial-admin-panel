@@ -15,33 +15,25 @@ const Authentication = () => {
   const { getAccessTokenSilently, user } = useAuth0();
 
   const callApi = async () => {
-    try {
-      const response = await fetch(`${serverUrl}/`);
+    const response = await fetch(`${serverUrl}/`);
 
-      const responseData = await response.json();
+    const responseData = await response.json();
 
-      setMessage(responseData);
-    } catch (error) {
-      setMessage(error.message);
-    }
+    setMessage(responseData);
   };
 
   const callSecureApi = async () => {
-    try {
-      const token = await getAccessTokenSilently();
+    const token = await getAccessTokenSilently();
 
-      const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-      const responseData = await response.json();
+    const responseData = await response.json();
 
-      setMessage(responseData);
-    } catch (error) {
-      setMessage(error.message);
-    }
+    setMessage(responseData);
   };
 
   return (
