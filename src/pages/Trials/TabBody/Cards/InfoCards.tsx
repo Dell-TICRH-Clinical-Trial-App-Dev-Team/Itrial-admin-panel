@@ -1,7 +1,7 @@
-import { makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { Trial } from "../../../../api/models";
+import { makeStyles, Theme } from "../../../../styles/material-ui";
 import InfoCard from "./InfoCard";
+import { Trial } from "../../../../api/models";
 
 const useStyles = makeStyles((theme: Theme) => ({
   body: {
@@ -19,9 +19,10 @@ const InfoCards: React.FC<props> = ({ trials, statusShow }) => {
   // filter according to status type
   if (statusShow !== 0) {
     trials = trials.filter((trial: Trial) => {
-      if (statusShow == 1) return trial.status == "active";
-      if (statusShow == 2) return trial.status == "pending";
-      if (statusShow == 3) return trial.status == "ended";
+      if (statusShow === 1) return trial.status === "active";
+      else if (statusShow === 2) return trial.status === "pending";
+      else if (statusShow === 3) return trial.status === "ended";
+      return false;
     });
   }
   const classes = useStyles();

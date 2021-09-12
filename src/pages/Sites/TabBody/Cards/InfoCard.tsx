@@ -1,11 +1,12 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles";
-import { SatelliteOutlined } from "@material-ui/icons";
+import {
+  Grid,
+  Typography,
+  KeyboardArrowRightIcon,
+  Paper,
+  makeStyles,
+  Theme,
+} from "../../../../styles/material-ui";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {

@@ -1,7 +1,6 @@
 import React from "react";
 import SiteTabs from "./SiteTabs";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { Typography, makeStyles, Theme } from "../../styles/material-ui";
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {

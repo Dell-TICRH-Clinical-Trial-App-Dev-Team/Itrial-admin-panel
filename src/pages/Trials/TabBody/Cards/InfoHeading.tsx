@@ -1,11 +1,7 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles";
+import { Grid, Typography } from "../../../../styles/material-ui";
 
 const InfoHeading = () => {
-
   return (
     <Grid container>
       <Grid item xs={4}>
@@ -17,7 +13,7 @@ const InfoHeading = () => {
       <Grid item xs={2}>
         <Typography variant="subtitle1">Completion data</Typography>
       </Grid>
-      <Grid item  xs={2}>
+      <Grid item xs={2}>
         <Typography variant="subtitle1">Patients Completed</Typography>
       </Grid>
       <Grid item xs={2}>
