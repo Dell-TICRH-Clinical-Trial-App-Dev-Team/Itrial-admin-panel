@@ -5,7 +5,6 @@ import SearchBar from "./TabBody/SearchBar";
 import InfoCards from "./TabBody/Cards/InfoCards";
 import TrialTabs from "./TrialTabs";
 
-// Clicking through tabs changes status info cards status shown
 describe("clicking tabs for trial states", () => {
   test("clicking the 'all' tab should display active trials", () => {
     const { getByTestId, getByRole } = render(<TrialTabs />);
@@ -81,7 +80,6 @@ describe("clicking tabs for trial states", () => {
   });
 });
 
-// search bar successfully taking in info
 describe("Search bar in test list", () => {
   test("search bar content should change on input", () => {
     const { getByTestId } = render(<SearchBar />);
@@ -95,9 +93,7 @@ describe("Search bar in test list", () => {
   });
 });
 
-// info cards successfully filtering through cards according to status
 describe("Filtering of trial info cards", () => {
-  //FIXME: Change w dummy data resembling what actually receive
   const dummyData = [
     {
       name: "Sam",
@@ -132,7 +128,7 @@ describe("Filtering of trial info cards", () => {
 
   test("tab 'all' should display each data entry", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"all"} />
+      <InfoCards trials={dummyData} statusShow={0} />
     );
     const cardName = getAllByTestId("trial-name").map((li) => li.textContent);
 
@@ -143,7 +139,7 @@ describe("Filtering of trial info cards", () => {
 
   test("tab 'active' should display 'active' data entry and add placeholder for completion date ", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"active"} />
+      <InfoCards trials={dummyData} statusShow={1} />
     );
 
     const cardStatus = getAllByTestId("trial-status").map(
@@ -164,7 +160,7 @@ describe("Filtering of trial info cards", () => {
 
   test("tab 'pending' should display 'pending' data entry and add placeholder for completion and start date", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"pending"} />
+      <InfoCards trials={dummyData} statusShow={2} />
     );
 
     const cardStatus = getAllByTestId("trial-status").map(
@@ -193,7 +189,7 @@ describe("Filtering of trial info cards", () => {
 
   test("tab 'ended' displays 'ended' data entry", () => {
     const { getAllByTestId } = render(
-      <InfoCards data={dummyData} statusShow={"ended"} />
+      <InfoCards trials={dummyData} statusShow={3} />
     );
 
     const cardStatus = getAllByTestId("trial-status").map(

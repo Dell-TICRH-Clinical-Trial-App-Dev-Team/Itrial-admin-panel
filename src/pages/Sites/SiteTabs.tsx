@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+
 import TabPanel from "./TabBody/TabPanel";
 import InfoCards from "./TabBody/Cards/InfoCards";
-import { Trial } from "../../api/models";
+
+import { Site } from "../../api/models";
 
 // FIXME: Replace with real data
-import dummyTrialData from "./dummyTrialData";
-let dummyTrials: Trial[] = dummyTrialData;
+import dummySiteData from "./dummySiteData";
+let dummySites: Site[] = dummySiteData;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -26,9 +28,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TrialTabs = () => {
+const SiteTabs = () => {
   const classes = useStyles();
-  const [tabDisplaying, setTab] = useState(0);
+  const [tabDisplaying, setTab] = React.useState(0);
 
   const handleChange = (_event, newTab: number) => {
     setTab(newTab);
@@ -40,25 +42,22 @@ const TrialTabs = () => {
         <Tabs
           value={tabDisplaying}
           onChange={handleChange}
-          aria-label="simple tabs example"
           className={classes.tabs}
           indicatorColor="primary"
           textColor="primary"
         >
           <Tab label="All" data-testid="all-tab" />
           <Tab label="Active" data-testid="active-tab" />
-          <Tab label="Pending" data-testid="pending-tab" />
-          <Tab label="Ended" data-testid="ended-tab" />
+          <Tab label="Inactive" data-testid="inactive-tab" />
         </Tabs>
       </AppBar>
 
-      <TabPanel value={tabDisplaying} index={0} />
-      <TabPanel value={tabDisplaying} index={1} />
-      <TabPanel value={tabDisplaying} index={2} />
-      <TabPanel value={tabDisplaying} index={3} />
-      <InfoCards trials={dummyTrials} statusShow={tabDisplaying} />
+      <TabPanel value={tabDisplaying} index={0}></TabPanel>
+      <TabPanel value={tabDisplaying} index={1}></TabPanel>
+      <TabPanel value={tabDisplaying} index={2}></TabPanel>
+      <InfoCards sites={dummySites} statusShow={tabDisplaying} />
     </div>
   );
 };
 
-export default TrialTabs;
+export default SiteTabs;

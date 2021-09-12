@@ -1,36 +1,42 @@
+import { makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { trialCardDTO } from "../../TrialTabs";
+import { Trial } from "../../../../api/models";
 import InfoCard from "./InfoCard";
 
+const useStyles = makeStyles((theme: Theme) => ({
+  body: {
+    margin: "0 7.4vw",
+  },
+}));
+
 interface props {
-  data: trialCardDTO[];
-  statusShow: string;
+  trials: Trial[];
+  statusShow: number;
 }
 
 // Maps through each data entry and returns data in <InfoCard />
-const InfoCards: React.FC<props> = ({ data, statusShow }) => {
+const InfoCards: React.FC<props> = ({ trials, statusShow }) => {
   // filter according to status type
-  if (statusShow !== "all") {
-    data = data.filter((trial: trialCardDTO) => trial.status === statusShow);
+  if (statusShow !== 0) {
+    trials = trials.filter((trial: Trial) => {
+      if (statusShow == 1) return trial.status == "active";
+      if (statusShow == 2) return trial.status == "pending";
+      if (statusShow == 3) return trial.status == "ended";
+    });
   }
-
+  const classes = useStyles();
   return (
-    <div>
-      {
-        // FIXME: Adapt to actual data format
-        data.map((trial: trialCardDTO) => (
-          <InfoCard
-            name={trial.name}
-            startDate={trial.startDate ? trial.startDate : "--/--/--"}
-            completionDate={
-              trial.completionDate ? trial.completionDate : "--/--/--"
-            }
-            patientsCompleted={trial.patientsCompleted}
-            status={trial.status}
-            key={trial.id}
-          />
-        ))
-      }
+    <div className={classes.body}>
+      {trials.map((trial: Trial) => (
+        <InfoCard
+          name={trial.name}
+          startDate={trial.startDate ? trial.startDate : "--/--/--"}
+          endDate={trial.endDate ? trial.endDate : "--/--/--"}
+          patientsCompleted={"18/100"} // this will be replaced with an API call
+          status={trial.status}
+          key={trial.id}
+        />
+      ))}
     </div>
   );
 };
