@@ -1,11 +1,7 @@
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Authentication = () => {
-  let { path } = useRouteMatch();
-
   const [message, setMessage] = useState("");
   const serverUrl = process.env.REACT_APP_SERVER_LOCAL_URL;
 

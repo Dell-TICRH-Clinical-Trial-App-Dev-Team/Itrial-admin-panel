@@ -19,8 +19,9 @@ const InfoCards: React.FC<props> = ({ sites, statusShow }) => {
   // filter according to status type
   if (statusShow !== 0) {
     sites = sites.filter((site: Site) => {
-      if (statusShow == 1) return site.trials.length > 0;
-      else if (statusShow == 2) return site.trials.length == 0;
+      if (statusShow === 1) return site.trials.length > 0;
+      else if (statusShow === 2) return site.trials.length === 0;
+      return false;
     });
   }
 
