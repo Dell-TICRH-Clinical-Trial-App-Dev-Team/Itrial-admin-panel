@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Paper from "@material-ui/core/Paper";
 import { SatelliteOutlined } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
 
 export {
   Typography,
@@ -18,5 +19,6 @@ export {
   KeyboardArrowRightIcon,
   Paper,
   SatelliteOutlined,
+  Button,
 };
 export type { Theme };
