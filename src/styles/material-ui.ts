@@ -8,6 +8,11 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Paper from "@material-ui/core/Paper";
 import { SatelliteOutlined } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 export {
   Typography,
@@ -20,5 +25,10 @@ export {
   Paper,
   SatelliteOutlined,
   Button,
+  TextField,
+  FormControl,
+  Select,
+  InputLabel,
+  MenuItem,
 };
 export type { Theme };

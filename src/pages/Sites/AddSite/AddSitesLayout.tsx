@@ -4,6 +4,7 @@ import {
   Typography,
   makeStyles,
   Grid,
+  Paper,
 } from "../../../styles/material-ui";
 import SiteDetails from "./SiteDetails";
 import TeamMemberDetails from "./TeamMemberDetails";
@@ -20,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     height: "100px",
     padding: "20px 0 0 7.4vw",
+  },
+  paperContainer: {
+    margin: "40px 15vw",
   },
 }));
 
@@ -42,7 +46,10 @@ export default function AddSitesLayout() {
         </Grid>
       </div>
 
-      <SiteDetails />
+      <div className={classes.paperContainer}>
+        <Paper elevation={3} children={<SiteDetails />} />
+      </div>
+
       <TeamMemberDetails />
     </div>
   );
