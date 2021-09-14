@@ -85,7 +85,6 @@ export default function SiteDetails() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value="one">One</MenuItem>
                     {stateList.map((state, index) => (
                       <MenuItem value={state} key={index}>
                         {state}

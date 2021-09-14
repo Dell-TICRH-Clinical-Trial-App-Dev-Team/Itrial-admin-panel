@@ -13,6 +13,7 @@ import AddCancelButtons from "./AddCancelButtons";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: "#F2F2F2",
+    marginBottom: "100px",
   },
   gridStyle: {
     paddingBottom: "40px",
@@ -47,10 +48,16 @@ export default function AddSitesLayout() {
       </div>
 
       <div className={classes.paperContainer}>
-        <Paper elevation={3} children={<SiteDetails />} />
+        <Paper elevation={3}>
+          <SiteDetails />
+        </Paper>
       </div>
 
-      <TeamMemberDetails />
+      <div className={classes.paperContainer}>
+        <Paper elevation={3}>
+          <TeamMemberDetails />
+        </Paper>
+      </div>
     </div>
   );
 }
