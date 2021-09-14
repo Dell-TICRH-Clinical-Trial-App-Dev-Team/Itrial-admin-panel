@@ -5,7 +5,7 @@ import AuthenticationButton from "../components/authentication-button";
 import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients";
 import Sites from "../pages/Sites/Sites";
-import AddSiteLayout from "../pages/Sites/AddSite/AddSiteLayout";
+import AddSitesLayout from "../pages/Sites/AddSite/AddSitesLayout";
 import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
 
@@ -34,7 +34,7 @@ export default function AppRouter() {
         <Route path="/authenticate" component={Authentication} />
         <ProtectedRoute path="/trials" component={Trials} />
         <ProtectedRoute path="/sites" component={Sites} />
-        <ProtectedRoute path="/add-sites" component={AddSiteLayout} />
+        <ProtectedRoute path="/add-sites" component={AddSitesLayout} />
         <ProtectedRoute path="/teams" component={Teams} />
         <ProtectedRoute path="/patients" component={Patients} />
       </Switch>

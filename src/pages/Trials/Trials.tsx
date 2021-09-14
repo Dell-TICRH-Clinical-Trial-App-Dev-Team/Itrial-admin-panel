@@ -9,11 +9,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderBottom: "1px solid black",
     backgroundColor: "white",
   },
-  heading: {
-    height: "100px",
-    backgroundColor: "white",
-    padding: "20px 0 0 7.4vw",
-  },
 }));
 
 const Trials = () => {

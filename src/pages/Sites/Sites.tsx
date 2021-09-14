@@ -1,6 +1,5 @@
 import React from "react";
 import SiteTabs from "./SiteTabs";
-import AddSiteLayout from "./AddSite/AddSiteLayout";
 
 import { Typography, makeStyles, Theme } from "../../styles/material-ui";
 
