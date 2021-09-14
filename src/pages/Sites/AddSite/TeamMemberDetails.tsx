@@ -15,7 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ListItemText from "@material-ui/core/ListItemText";
 import Input from "@material-ui/core/Input";
-
+import Chip from "@material-ui/core/Chip";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const teammemberList = [
@@ -68,8 +68,13 @@ export default function TeamMemberDetails() {
   const classes = useStyles();
   const [teammember, setTeammember] = useState<string[]>([]);
 
-  const handleChange = (e) => {
+  const handleFormChange = (e) => {
     setTeammember(e.target.value);
+  };
+
+  const handleChipDelete = (chipToDelete: string) => {
+    // console.log(chipToDelete);
+    setTeammember(teammember.filter((member) => member !== chipToDelete));
   };
 
   return (
@@ -86,7 +91,7 @@ export default function TeamMemberDetails() {
               id="demo-mutiple-checkbox"
               multiple
               value={teammember}
-              onChange={handleChange}
+              onChange={handleFormChange}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}
               MenuProps={MenuProps}
@@ -103,6 +108,19 @@ export default function TeamMemberDetails() {
               ))}
             </Select>
           </FormControl>
+        </div>
+        <div>
+          {teammember.map((name: string) => (
+            <Chip
+              key={name}
+              label={name}
+              variant="outlined"
+              color="primary"
+              onClick={() => handleChipDelete(name)}
+              onDelete={() => handleChipDelete(name)}
+              className={classes.chip}
+            />
+          ))}
         </div>
       </div>
     </div>
