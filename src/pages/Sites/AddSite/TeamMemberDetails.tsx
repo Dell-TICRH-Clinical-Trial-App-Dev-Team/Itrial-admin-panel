@@ -62,17 +62,18 @@ const MenuProps = {
   },
 };
 
-export default function TeamMemberDetails() {
+export default function TeamMemberDetails({ teammember, handleSiteChange }) {
   const classes = useStyles();
-  const [teammember, setTeammember] = useState<string[]>([]);
 
-  const handleFormChange = (e) => {
-    setTeammember(e.target.value);
-  };
+  const handleFormChange = (e) =>
+    handleSiteChange("teammember", e.target.value);
 
   const handleChipDelete = (chipToDelete: string) => {
     // console.log(chipToDelete);
-    setTeammember(teammember.filter((member) => member !== chipToDelete));
+    handleSiteChange(
+      "teammember",
+      teammember.filter((member) => member !== chipToDelete)
+    );
   };
 
   return (

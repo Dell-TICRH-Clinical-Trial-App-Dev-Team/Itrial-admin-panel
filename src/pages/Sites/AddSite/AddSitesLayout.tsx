@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Theme,
   Typography,
@@ -9,19 +9,12 @@ import {
 import SiteDetails from "./SiteDetails";
 import TeamMemberDetails from "./TeamMemberDetails";
 import AddCancelButtons from "./AddCancelButtons";
+import AddSiteHeading from "./AddSiteHeading";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: "#F2F2F2",
     marginBottom: "100px",
-  },
-  gridStyle: {
-    paddingBottom: "40px",
-    backgroundColor: "#FFFFFF",
-  },
-  heading: {
-    height: "100px",
-    padding: "20px 0 0 7.4vw",
   },
   paperContainer: {
     margin: "40px 15vw",
@@ -30,33 +23,62 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function AddSitesLayout() {
   const classes = useStyles();
+  const [name, setName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [teammember, setTeammember] = useState<string[]>([]);
+
+  const handleSiteChange = (label, newVal) => {
+    switch (label) {
+      case "name":
+        setName(newVal);
+        break;
+      case "street":
+        setStreet(newVal);
+        break;
+      case "city":
+        setCity(newVal);
+        break;
+      case "state":
+        setState(newVal);
+        break;
+      case "zip":
+        setZip(newVal);
+        break;
+      case "teammember":
+        setTeammember(newVal);
+        break;
+    }
+  };
+
+  const submitSite = () => {
+    console.log(name, street, city, state, zip, teammember);
+  };
 
   return (
     <div className={classes.root}>
-      <div className={classes.gridStyle}>
-        <Grid container>
-          <Grid item xs={9}>
-            <div className={classes.heading}>
-              <Typography variant="h1">Add Site</Typography>
-            </div>
-          </Grid>
-          <Grid item xs={3}>
-            <div>
-              <AddCancelButtons />
-            </div>
-          </Grid>
-        </Grid>
-      </div>
-
+      <AddSiteHeading submitSite={submitSite} />
       <div className={classes.paperContainer}>
         <Paper elevation={3}>
-          <SiteDetails />
+          <SiteDetails
+            name={name}
+            street={street}
+            city={city}
+            state={state}
+            zip={zip}
+            handleSiteChange={handleSiteChange}
+          />
         </Paper>
       </div>
 
       <div className={classes.paperContainer}>
         <Paper elevation={3}>
-          <TeamMemberDetails />
+          <TeamMemberDetails
+            teammember={teammember}
+            handleSiteChange={handleSiteChange}
+          />
         </Paper>
       </div>
     </div>
