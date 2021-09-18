@@ -10,6 +10,8 @@ import {
   MenuItem,
   Grid,
 } from "../../../styles/material-ui";
+import { deepPurple } from "@material-ui/core/colors";
+
 import { useTheme, createStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -26,29 +28,27 @@ const teammemberList = [
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      width: "50vw",
-    },
-    chips: {
-      display: "flex",
-      flexWrap: "wrap",
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
     root: {
       margin: "0 10vw",
     },
     section: {
       padding: "30px 0",
     },
-    textField: {
-      paddingTop: "20px",
-      width: "100%",
+    formControl: {
+      margin: theme.spacing(1),
+      width: "50vw",
+    },
+    selectRoot: {
+      paddingRight: "32px",
+      border: "1px solid black",
+      borderRadius: "4px",
+    },
+    selectInput: {
+      padding: "18.5px 14px",
+    },
+    chip: {
+      margin: 2,
+      border: "1px dashed #ABC3D1",
     },
   })
 );
@@ -60,6 +60,8 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
+      border: "1px solid #2C698D",
+      borderRadius: "6px",
     },
   },
 };
@@ -81,7 +83,7 @@ export default function TeamMemberDetails() {
     <div className={classes.root}>
       <div className={classes.section}>
         <Typography variant="h5">Team members</Typography>
-        <div className={classes.textField}>
+        <div>
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-mutiple-checkbox-label">
               Add team member
@@ -92,6 +94,7 @@ export default function TeamMemberDetails() {
               multiple
               value={teammember}
               defaultValue=""
+              label="Add team member"
               onChange={handleFormChange}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}
