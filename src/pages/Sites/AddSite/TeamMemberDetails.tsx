@@ -3,22 +3,18 @@ import {
   makeStyles,
   Typography,
   Theme,
-  TextField,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  Grid,
+  createStyles,
+  Checkbox,
+  CheckCircleOutlineIcon,
+  ListItemText,
+  Input,
+  Chip,
+  AddCircleIcon,
 } from "../../../styles/material-ui";
-import { deepPurple } from "@material-ui/core/colors";
-
-import { useTheme, createStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ListItemText from "@material-ui/core/ListItemText";
-import Input from "@material-ui/core/Input";
-import Chip from "@material-ui/core/Chip";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const teammemberList = [
   "alexander hamilton",

@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function AddSitesLayout() {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <div className={classes.gridStyle}>

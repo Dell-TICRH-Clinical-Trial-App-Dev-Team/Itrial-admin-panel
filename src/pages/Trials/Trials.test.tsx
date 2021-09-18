@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import SearchBar from "./TabBody/SearchBar";
+import SearchBar from "../../components/SearchBar";
 import InfoCards from "./TabBody/Cards/InfoCards";
 import TrialTabs from "./TrialTabs";
 

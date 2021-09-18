@@ -10,8 +10,8 @@ import {
   MenuItem,
   Grid,
 } from "../../../styles/material-ui";
+
 import stateList from "./data/stateList";
-const constStateList = stateList;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -87,7 +87,7 @@ export default function SiteDetails() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    {constStateList.map((state, index) => (
+                    {stateList.map((state, index) => (
                       <MenuItem value={state} key={index}>
                         {state}
                       </MenuItem>
