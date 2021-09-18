@@ -11,6 +11,7 @@ import {
   Grid,
 } from "../../../styles/material-ui";
 import stateList from "./data/stateList";
+const constStateList = stateList;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -77,6 +78,7 @@ export default function SiteDetails() {
                   <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
+                    defaultValue=""
                     value={state}
                     onChange={handleStateChange}
                     label="State"
@@ -85,7 +87,7 @@ export default function SiteDetails() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    {stateList.map((state, index) => (
+                    {constStateList.map((state, index) => (
                       <MenuItem value={state} key={index}>
                         {state}
                       </MenuItem>

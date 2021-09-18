@@ -91,6 +91,7 @@ export default function TeamMemberDetails() {
               id="demo-mutiple-checkbox"
               multiple
               value={teammember}
+              defaultValue=""
               onChange={handleFormChange}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}
