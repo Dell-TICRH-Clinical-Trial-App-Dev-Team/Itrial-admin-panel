@@ -10,7 +10,8 @@ import {
   MenuItem,
   Grid,
 } from "../../../styles/material-ui";
-import stateList from "./data/stateList";
+import stateList from "../../../assets/stateList";
+import TeamMemberDetails from "../../Sites/AddSite/TeamMemberDetails";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -36,75 +37,33 @@ export default function SiteDetails() {
     setState(e.target.value);
   };
 
-  return (
-    <div className={classes.root}>
-      <div className={classes.section}>
-        <Typography variant="h5">Site Details</Typography>
-        <div className={classes.textField}>
-          <TextField
-            variant="outlined"
-            label="Name"
-            color="primary"
-            fullWidth
-          />
-        </div>
-      </div>
+  const sites = [
+    {
+      name: "Site 1",
+      teamMembers: [],
+    },
+  ];
 
-      <div className={classes.section}>
-        <Typography variant="h5">Address</Typography>
-        <div className={classes.textField}>
-          <TextField
-            variant="outlined"
-            label="Street"
-            color="primary"
-            fullWidth
-          />
-        </div>
-        <div className={classes.textField}>
-          <TextField
-            variant="outlined"
-            label="City"
-            color="primary"
-            fullWidth
-          />
-          <div className={classes.textField}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <FormControl variant="outlined">
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    State
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={state}
-                    onChange={handleStateChange}
-                    label="State"
-                    className={classes.select}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    {stateList.map((state, index) => (
-                      <MenuItem value={state} key={index}>
-                        {state}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
+  return (
+    <div>
+      {sites.map((site) => (
+        <>
+          <div className={classes.root}>
+            <div className={classes.section}>
+              <Typography variant="h5">{site.name}</Typography>
+              <div className={classes.textField}>
                 <TextField
                   variant="outlined"
-                  label="Zip code"
+                  label="Name"
                   color="primary"
                   fullWidth
                 />
-              </Grid>
-            </Grid>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+          <TeamMemberDetails />
+        </>
+      ))}
     </div>
   );
 }

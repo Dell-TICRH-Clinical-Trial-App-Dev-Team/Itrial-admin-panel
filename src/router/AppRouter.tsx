@@ -6,8 +6,10 @@ import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients";
 import Sites from "../pages/Sites/Sites";
 import AddSitesLayout from "../pages/Sites/AddSite/AddSitesLayout";
+import AddTrialsLayout from "../pages/Trials/AddTrial/AddTrialsLayout";
 import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
+import Greetings from "../components/Greetings";
 
 export default function AppRouter() {
   return (
@@ -35,8 +37,10 @@ export default function AppRouter() {
         <ProtectedRoute path="/trials" component={Trials} />
         <ProtectedRoute path="/sites" component={Sites} />
         <ProtectedRoute path="/add-sites" component={AddSitesLayout} />
+        <ProtectedRoute path="/add-trials" component={AddTrialsLayout} />
         <ProtectedRoute path="/teams" component={Teams} />
         <ProtectedRoute path="/patients" component={Patients} />
+        <Route path="/" component={Greetings} />
       </Switch>
     </Router>
   );

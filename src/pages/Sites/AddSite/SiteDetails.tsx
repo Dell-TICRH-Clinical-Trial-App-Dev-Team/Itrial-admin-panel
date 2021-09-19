@@ -10,7 +10,7 @@ import {
   MenuItem,
   Grid,
 } from "../../../styles/material-ui";
-import stateList from "./data/stateList";
+import stateList from "../../../assets/stateList";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
