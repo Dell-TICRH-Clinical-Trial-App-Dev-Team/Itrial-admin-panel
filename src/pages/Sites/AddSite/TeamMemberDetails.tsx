@@ -86,12 +86,14 @@ export default function TeamMemberDetails({ teammember, handleSiteChange }) {
               Add team member
             </InputLabel>
             <Select
-              labelId="demo-mutiple-checkbox-label"
-              id="demo-mutiple-checkbox"
+              labelId="teammember-drop-down"
+              id="teammember-drop-down"
+              data-testid="teammemberSelect"
               multiple
               value={teammember}
               defaultValue=""
               label="Add team member"
+              inputProps={{ "data-testid": "teammemberOption" }}
               onChange={handleFormChange}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}

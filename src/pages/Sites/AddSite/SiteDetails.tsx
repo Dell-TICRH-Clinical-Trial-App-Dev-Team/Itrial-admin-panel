@@ -51,6 +51,7 @@ export default function SiteDetails({
         <Typography variant="h5">Site Details</Typography>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "nameInput" }}
             variant="outlined"
             label="Name"
             color="primary"
@@ -65,6 +66,7 @@ export default function SiteDetails({
         <Typography variant="h5">Address</Typography>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "streetInput" }}
             variant="outlined"
             label="Street"
             color="primary"
@@ -75,6 +77,7 @@ export default function SiteDetails({
         </div>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "cityInput" }}
             variant="outlined"
             label="City"
             color="primary"
@@ -111,6 +114,7 @@ export default function SiteDetails({
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  inputProps={{ "data-testid": "zipInput" }}
                   variant="outlined"
                   label="Zip code"
                   color="primary"
