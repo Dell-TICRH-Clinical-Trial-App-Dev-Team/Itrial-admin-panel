@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function AddCancelButtons() {
+export default function AddCancelButtons({ submitSite }) {
   const classes = useStyles();
 
   return (
@@ -27,6 +27,7 @@ export default function AddCancelButtons() {
           className={classes.btnStyle}
           variant="contained"
           color="primary"
+          onClick={submitSite}
         >
           Add
         </Button>

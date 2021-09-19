@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, makeStyles, Theme } from "../../styles/material-ui";
-import PageHeading from "../../components/PageHeading";
 import TrialTabs from "./TrialTabs";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -8,6 +7,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "64px",
     borderBottom: "1px solid black",
     backgroundColor: "white",
+  },
+  heading: {
+    height: "100px",
+    backgroundColor: "white",
+    padding: "20px 0 0 7.4vw",
   },
 }));
 
@@ -19,7 +23,9 @@ const Trials = () => {
       {/*FIXME: Add App Bar*/}
       <div className={classes.appBar}>App bar</div>
 
-      <PageHeading headingName={"Trials"} />
+      <div className={classes.heading}>
+        <Typography variant="h1">Trials</Typography>
+      </div>
 
       <TrialTabs />
     </div>

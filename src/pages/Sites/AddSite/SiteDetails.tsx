@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   makeStyles,
   Typography,
@@ -28,13 +28,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function SiteDetails() {
+export default function SiteDetails({
+  name,
+  street,
+  city,
+  state,
+  zip,
+  handleSiteChange,
+}) {
   const classes = useStyles();
-  const [state, setState] = useState("");
 
-  const handleStateChange = (e) => {
-    setState(e.target.value);
-  };
+  const handleNameChange = (e) => handleSiteChange("name", e.target.value);
+  const handleStreetChange = (e) => handleSiteChange("street", e.target.value);
+  const handleCityChange = (e) => handleSiteChange("city", e.target.value);
+  const handleStateChange = (e) => handleSiteChange("state", e.target.value);
+  const handleZipChange = (e) => handleSiteChange("zip", e.target.value);
 
   return (
     <div className={classes.root}>
@@ -42,10 +50,13 @@ export default function SiteDetails() {
         <Typography variant="h5">Site Details</Typography>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "nameInput" }}
             variant="outlined"
             label="Name"
             color="primary"
             fullWidth
+            value={name}
+            onChange={handleNameChange}
           />
         </div>
       </div>
@@ -54,18 +65,24 @@ export default function SiteDetails() {
         <Typography variant="h5">Address</Typography>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "streetInput" }}
             variant="outlined"
             label="Street"
             color="primary"
             fullWidth
+            value={street}
+            onChange={handleStreetChange}
           />
         </div>
         <div className={classes.textField}>
           <TextField
+            inputProps={{ "data-testid": "cityInput" }}
             variant="outlined"
             label="City"
             color="primary"
             fullWidth
+            value={city}
+            onChange={handleCityChange}
           />
           <div className={classes.textField}>
             <Grid container spacing={2}>
@@ -77,10 +94,11 @@ export default function SiteDetails() {
                   <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    value={state}
-                    onChange={handleStateChange}
+                    defaultValue=""
                     label="State"
                     className={classes.select}
+                    value={state}
+                    onChange={handleStateChange}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -95,10 +113,13 @@ export default function SiteDetails() {
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  inputProps={{ "data-testid": "zipInput" }}
                   variant="outlined"
                   label="Zip code"
                   color="primary"
                   fullWidth
+                  value={zip}
+                  onChange={handleZipChange}
                 />
               </Grid>
             </Grid>

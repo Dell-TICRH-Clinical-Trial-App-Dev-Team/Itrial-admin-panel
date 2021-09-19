@@ -1,54 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   makeStyles,
   Typography,
   Theme,
-  TextField,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  Grid,
+  createStyles,
+  Checkbox,
+  CheckCircleOutlineIcon,
+  ListItemText,
+  Input,
+  Chip,
+  AddCircleIcon,
 } from "../../../styles/material-ui";
-import { useTheme, createStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ListItemText from "@material-ui/core/ListItemText";
-import Input from "@material-ui/core/Input";
-
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-
-const teammemberList = [
-  "alexander hamilton",
-  "george washington",
-  "thomas jefferson",
-];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      width: "50vw",
-    },
-    chips: {
-      display: "flex",
-      flexWrap: "wrap",
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
     root: {
       margin: "0 10vw",
     },
     section: {
       padding: "30px 0",
     },
-    textField: {
-      paddingTop: "20px",
-      width: "100%",
+    formControl: {
+      margin: theme.spacing(1),
+      width: "50vw",
+    },
+    selectRoot: {
+      paddingRight: "32px",
+      border: "1px solid black",
+      borderRadius: "4px",
+    },
+    selectInput: {
+      padding: "18.5px 14px",
+    },
+    chip: {
+      margin: 2,
+      border: "1px dashed #ABC3D1",
     },
   })
 );
@@ -60,33 +50,48 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
+      border: "1px solid #2C698D",
+      borderRadius: "6px",
     },
   },
 };
 
-export default function TeamMemberDetails() {
+export default function TeamMemberDetails({
+  teammember,
+  handleSiteChange,
+  teammemberList,
+}) {
   const classes = useStyles();
-  const [teammember, setTeammember] = useState<string[]>([]);
 
-  const handleChange = (e) => {
-    setTeammember(e.target.value);
+  const handleFormChange = (e) =>
+    handleSiteChange("teammember", e.target.value);
+
+  const handleChipDelete = (chipToDelete: string) => {
+    handleSiteChange(
+      "teammember",
+      teammember.filter((member) => member !== chipToDelete)
+    );
   };
 
   return (
     <div className={classes.root}>
       <div className={classes.section}>
         <Typography variant="h5">Team members</Typography>
-        <div className={classes.textField}>
+        <div>
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-mutiple-checkbox-label">
               Add team member
             </InputLabel>
             <Select
-              labelId="demo-mutiple-checkbox-label"
-              id="demo-mutiple-checkbox"
+              labelId="teammember-drop-down"
+              id="teammember-drop-down"
+              data-testid="teammemberSelect"
               multiple
               value={teammember}
-              onChange={handleChange}
+              defaultValue=""
+              label="Add team member"
+              inputProps={{ "data-testid": "teammemberOption" }}
+              onChange={handleFormChange}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}
               MenuProps={MenuProps}
@@ -103,6 +108,19 @@ export default function TeamMemberDetails() {
               ))}
             </Select>
           </FormControl>
+        </div>
+        <div>
+          {teammember.map((name: string) => (
+            <Chip
+              key={name}
+              label={name}
+              variant="outlined"
+              color="primary"
+              onClick={() => handleChipDelete(name)}
+              onDelete={() => handleChipDelete(name)}
+              className={classes.chip}
+            />
+          ))}
         </div>
       </div>
     </div>
