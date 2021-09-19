@@ -43,6 +43,5 @@ export {
   Input,
   Chip,
   AddCircleIcon,
-  AddCancelButtons,
 };
 export type { Theme };
