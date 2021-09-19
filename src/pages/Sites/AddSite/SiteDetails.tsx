@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   makeStyles,
   Typography,
@@ -10,7 +10,6 @@ import {
   MenuItem,
   Grid,
 } from "../../../styles/material-ui";
-
 import stateList from "./data/stateList";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -96,10 +95,10 @@ export default function SiteDetails({
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
                     defaultValue=""
-                    value={state}
-                    onChange={handleStateChange}
                     label="State"
                     className={classes.select}
+                    value={state}
+                    onChange={handleStateChange}
                   >
                     <MenuItem value="">
                       <em>None</em>

@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  Theme,
-  Typography,
-  makeStyles,
-  Grid,
-  Paper,
-} from "../../../styles/material-ui";
+import { Theme, makeStyles, Paper } from "../../../styles/material-ui";
 import SiteDetails from "./SiteDetails";
 import TeamMemberDetails from "./TeamMemberDetails";
-import AddCancelButtons from "./AddCancelButtons";
 import AddSiteHeading from "./AddSiteHeading";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -53,7 +46,15 @@ export default function AddSitesLayout() {
     }
   };
 
+  //Fixme: get from backend
+  const teammemberList = [
+    "alexander hamilton",
+    "george washington",
+    "thomas jefferson",
+  ];
+
   const submitSite = () => {
+    //Fixme: Send info to backend
     console.log(name, street, city, state, zip, teammember);
   };
 
@@ -78,6 +79,7 @@ export default function AddSitesLayout() {
           <TeamMemberDetails
             teammember={teammember}
             handleSiteChange={handleSiteChange}
+            teammemberList={teammemberList}
           />
         </Paper>
       </div>

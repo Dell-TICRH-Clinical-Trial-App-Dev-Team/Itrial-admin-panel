@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   makeStyles,
   Typography,
@@ -15,12 +15,6 @@ import {
   Chip,
   AddCircleIcon,
 } from "../../../styles/material-ui";
-
-const teammemberList = [
-  "alexander hamilton",
-  "george washington",
-  "thomas jefferson",
-];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,14 +56,17 @@ const MenuProps = {
   },
 };
 
-export default function TeamMemberDetails({ teammember, handleSiteChange }) {
+export default function TeamMemberDetails({
+  teammember,
+  handleSiteChange,
+  teammemberList,
+}) {
   const classes = useStyles();
 
   const handleFormChange = (e) =>
     handleSiteChange("teammember", e.target.value);
 
   const handleChipDelete = (chipToDelete: string) => {
-    // console.log(chipToDelete);
     handleSiteChange(
       "teammember",
       teammember.filter((member) => member !== chipToDelete)
