@@ -1,6 +1,6 @@
 import { Button, makeStyles, Theme, Add } from "../styles/material-ui";
 
-const FooterButton = ({ buttonText }) => {
+const FooterButton = ({ buttonText, onClick }) => {
   const useStyles = makeStyles((theme: Theme) => ({
     root: {
       margin: "0 10vw",
@@ -29,6 +29,7 @@ const FooterButton = ({ buttonText }) => {
           variant="outlined"
           className={classes.footerButton}
           startIcon={<Add />}
+          onClick={() => onClick()}
         >
           {buttonText}
         </Button>

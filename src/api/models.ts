@@ -3,12 +3,13 @@ export interface Trial {
   startDate?: string;
   endDate?: string;
   endpointResults?: string;
-  protocols?: TrialProtocol[];
+  protocols: TrialProtocol[];
   blinded?: boolean;
-  sites?: Site[];
-  cccs?: TeamMember[];
-  groups?: Group[];
-  patients?: Patient[];
+  sites: Site[];
+  teamMembers: TeamMember[];
+  cccs: TeamMember[];
+  groups: Group[];
+  patients: Patient[];
   status: string;
   id: number;
 }

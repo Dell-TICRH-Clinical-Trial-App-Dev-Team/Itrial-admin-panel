@@ -14,44 +14,60 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function AddCancelButtons({ step }) {
+export default function AddTrialProgressButtons({
+  step,
+  setStep,
+  createTrial,
+}) {
   const classes = useStyles();
 
+  const nextButton = (
+    <Button
+      className={classes.btnStyle}
+      variant="contained"
+      color="primary"
+      onClick={() => setStep(step + 1)}
+    >
+      Next
+    </Button>
+  );
+
+  const backButton = (
+    <Button
+      className={classes.btnStyle}
+      variant="outlined"
+      color="primary"
+      onClick={() => setStep(step - 1)}
+    >
+      Back
+    </Button>
+  );
+
+  const createTrialButton = (
+    <Button
+      className={classes.btnStyle}
+      variant="contained"
+      color="primary"
+      onClick={() => createTrial()}
+    >
+      Create Trial
+    </Button>
+  );
+
   let buttons;
-  if (step === 1)
-    buttons = (
-      <Button className={classes.btnStyle} variant="contained" color="primary">
-        Next
-      </Button>
-    );
+  if (step === 1) buttons = nextButton;
   else if (step === 2)
     buttons = (
       <>
-        <Button className={classes.btnStyle} variant="outlined" color="primary">
-          Back
-        </Button>
-        <Button
-          className={classes.btnStyle}
-          variant="contained"
-          color="primary"
-        >
-          Next
-        </Button>
+        {backButton}
+        {nextButton}
       </>
     );
   else
     buttons = (
       <>
-        <Button className={classes.btnStyle} variant="outlined" color="primary">
-          Back
-        </Button>
-        <Button
-          className={classes.btnStyle}
-          variant="contained"
-          color="primary"
-        >
-          Create Trial
-        </Button>
+        {backButton}
+        {createTrialButton}
       </>
     );
 

@@ -35,6 +35,12 @@ const dummySiteData: Site[] = [
       {
         name: "trial 1",
         status: "pending",
+        protocols: [],
+        sites: [],
+        teamMembers: [],
+        cccs: [],
+        groups: [],
+        patients: [],
         id: 1,
       },
     ],

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Theme,
   Typography,
@@ -10,8 +10,14 @@ import {
 } from "../../../styles/material-ui";
 import TrialDetails from "./TrialDetails";
 import SiteDetails from "./SiteDetails";
-import AddCancelButtons from "./AddTrialProgressButtons";
+import AddTrialProgressButtons from "./AddTrialProgressButtons";
 import FooterButton from "../../../components/FooterButton";
+import { Group, Site, TeamMember, TrialProtocol } from "../../../api/models";
+import GroupDetails from "./GroupDetails";
+import TrialProtocolDetails from "./TrialProtocolDetails";
+import ConsentFormDetails from "./ConsentFormDetails";
+
+import dummySiteData from "../../Sites/dummySiteData";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -36,8 +42,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function AddTrialsLayout() {
-  const [step, setStep] = React.useState(1);
   const classes = useStyles();
+
+  const [step, setStep] = useState(1);
 
   const stepDescriptions = [
     "Step 1/3 - Name your trial & add sites",
@@ -45,9 +52,47 @@ export default function AddTrialsLayout() {
     "Step 3/3 - Attach trial protocol and consent form",
   ];
 
-  let currentFormFields;
+  const [name, setName] = useState("");
+  const [sites, setSites] = useState<Site[]>([
+    {
+      name: "",
+      address: "",
+      trials: [],
+      teamMembers: [],
+      cccs: [],
+      id: 1,
+    },
+  ]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [groups, setGroups] = useState<Group[]>([]);
+  const [trialProtocol, setTrialProtocol] = useState<string>("");
+  const [consentForm, setConsentForm] = useState<string>("");
 
-  if (step == 1)
+  const handleTrialChange = (field, newVal) => {
+    switch (field) {
+      case "name":
+        setName(newVal);
+        break;
+      case "sites":
+        setSites(newVal);
+        break;
+      case "teamMembers":
+        setTeamMembers(newVal);
+        break;
+      case "groups":
+        setGroups(newVal);
+        break;
+      case "trialProtocol":
+        setTrialProtocol(newVal);
+        break;
+      case "consentForm":
+        setConsentForm(newVal);
+        break;
+    }
+  };
+
+  let currentFormFields;
+  if (step === 1) {
     currentFormFields = (
       <>
         <div className={classes.paperContainer}>
@@ -58,15 +103,45 @@ export default function AddTrialsLayout() {
 
         <div className={classes.paperContainer}>
           <Paper elevation={3}>
-            <SiteDetails />
+            <SiteDetails
+              sites={sites}
+              allSites={dummySiteData}
+              teamMembers={teamMembers}
+              handleTrialChange={handleTrialChange}
+            />
           </Paper>
         </div>
       </>
     );
+  } else if (step === 2) {
+    currentFormFields = (
+      <div className={classes.paperContainer}>
+        <Paper elevation={3}>
+          <GroupDetails />
+        </Paper>
+      </div>
+    );
+  } else {
+    currentFormFields = (
+      <>
+        <div className={classes.paperContainer}>
+          <Paper elevation={3}>
+            <TrialProtocolDetails />
+          </Paper>
+        </div>
+        <div className={classes.paperContainer}>
+          <Paper elevation={3}>
+            <ConsentFormDetails />
+          </Paper>
+        </div>
+      </>
+    );
+  }
 
-  let addFormField = () => {
-    console.log("lmao");
+  const createTrial = () => {
+    console.log(name, sites, teamMembers, groups, trialProtocol, consentForm);
   };
+
   return (
     <div className={classes.root}>
       <div className={classes.gridStyle}>
@@ -89,7 +164,11 @@ export default function AddTrialsLayout() {
           </Grid>
           <Grid item xs={3}>
             <div>
-              <AddCancelButtons step={step} />
+              <AddTrialProgressButtons
+                step={step}
+                setStep={setStep}
+                createTrial={createTrial}
+              />
             </div>
           </Grid>
         </Grid>
@@ -97,7 +176,38 @@ export default function AddTrialsLayout() {
 
       {currentFormFields}
 
-      <FooterButton buttonText={step == 1 ? "Add Sites" : "Add Groups"} />
+      <FooterButton
+        buttonText={step === 1 ? "Add Sites" : "Add Groups"}
+        onClick={() => {
+          if (step === 1) {
+            const updatedSites: Site[] = [
+              ...sites,
+              {
+                name: "",
+                address: "",
+                trials: [],
+                teamMembers: [],
+                cccs: [],
+                id: 1,
+              },
+            ];
+            setSites(updatedSites);
+          if (step === 2) {
+            const updatedGroups: Group[] = [
+              ...groups,
+              {
+                name: "",
+                patients: [],
+                trial: [],
+                teamMembers: [],
+                cccs: [],
+                id: 1,
+              },
+            ];
+            setSites(updatedSites);
+          }
+        }}
+      />
     </div>
   );
 }
