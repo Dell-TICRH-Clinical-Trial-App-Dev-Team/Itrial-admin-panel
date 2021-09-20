@@ -63,9 +63,6 @@ export default function TeamMemberDetails({
 }) {
   const classes = useStyles();
 
-  const handleFormChange = (e) =>
-    handleSiteChange("teammember", e.target.value);
-
   const handleChipDelete = (chipToDelete: string) => {
     handleSiteChange(
       "teammember",
@@ -91,7 +88,7 @@ export default function TeamMemberDetails({
               defaultValue=""
               label="Add team member"
               inputProps={{ "data-testid": "teammemberOption" }}
-              onChange={handleFormChange}
+              onChange={(e) => handleSiteChange("teammember", e.target.value)}
               input={<Input />}
               renderValue={(selected) => (selected as string[]).join(", ")}
               MenuProps={MenuProps}

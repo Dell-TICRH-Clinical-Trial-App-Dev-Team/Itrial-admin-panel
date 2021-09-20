@@ -38,12 +38,6 @@ export default function SiteDetails({
 }) {
   const classes = useStyles();
 
-  const handleNameChange = (e) => handleSiteChange("name", e.target.value);
-  const handleStreetChange = (e) => handleSiteChange("street", e.target.value);
-  const handleCityChange = (e) => handleSiteChange("city", e.target.value);
-  const handleStateChange = (e) => handleSiteChange("state", e.target.value);
-  const handleZipChange = (e) => handleSiteChange("zip", e.target.value);
-
   return (
     <div className={classes.root}>
       <div className={classes.section}>
@@ -56,7 +50,7 @@ export default function SiteDetails({
             color="primary"
             fullWidth
             value={name}
-            onChange={handleNameChange}
+            onChange={(e) => handleSiteChange("name", e.target.value)}
           />
         </div>
       </div>
@@ -71,7 +65,7 @@ export default function SiteDetails({
             color="primary"
             fullWidth
             value={street}
-            onChange={handleStreetChange}
+            onChange={(e) => handleSiteChange("street", e.target.value)}
           />
         </div>
         <div className={classes.textField}>
@@ -82,7 +76,7 @@ export default function SiteDetails({
             color="primary"
             fullWidth
             value={city}
-            onChange={handleCityChange}
+            onChange={(e) => handleSiteChange("city", e.target.value)}
           />
           <div className={classes.textField}>
             <Grid container spacing={2}>
@@ -98,7 +92,7 @@ export default function SiteDetails({
                     label="State"
                     className={classes.select}
                     value={state}
-                    onChange={handleStateChange}
+                    onChange={(e) => handleSiteChange("state", e.target.value)}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -119,7 +113,7 @@ export default function SiteDetails({
                   color="primary"
                   fullWidth
                   value={zip}
-                  onChange={handleZipChange}
+                  onChange={(e) => handleSiteChange("zip", e.target.value)}
                 />
               </Grid>
             </Grid>

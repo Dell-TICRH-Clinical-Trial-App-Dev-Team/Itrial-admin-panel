@@ -2,13 +2,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ProtectedRoute from "../auth/protected-route";
 import AuthenticationButton from "../components/authentication-button";
+
 import Authentication from "../pages/Authentication";
-import Patients from "../pages/Patients";
+import AddTrialsLayout from "../pages/Trials/AddTrial/AddTrialsLayout";
 import Sites from "../pages/Sites/Sites";
 import AddSitesLayout from "../pages/Sites/AddSite/AddSitesLayout";
-import AddTrialsLayout from "../pages/Trials/AddTrial/AddTrialsLayout";
-import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
+import Patients from "../pages/Patients";
+import Teams from "../pages/Teams";
+
 import Greetings from "../components/Greetings";
 
 export default function AppRouter() {

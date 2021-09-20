@@ -23,8 +23,8 @@ export default function AddSitesLayout() {
   const [zip, setZip] = useState("");
   const [teammember, setTeammember] = useState<string[]>([]);
 
-  const handleSiteChange = (label, newVal) => {
-    switch (label) {
+  const handleSiteChange = (field, newVal) => {
+    switch (field) {
       case "name":
         setName(newVal);
         break;
