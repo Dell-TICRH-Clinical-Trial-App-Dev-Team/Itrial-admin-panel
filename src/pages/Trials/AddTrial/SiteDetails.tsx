@@ -61,7 +61,7 @@ export default function SiteDetails() {
               </div>
             </div>
           </div>
-          <TeamMemberDetails />
+          {/* <TeamMemberDetails /> */}
         </>
       ))}
     </div>
