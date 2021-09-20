@@ -5,7 +5,6 @@ import TeamMemberDetails from "./TeamMemberDetails";
 
 describe("all input responds to user", () => {
   test("text input should change on user input", () => {
-    expect(true).toBe(true);
     const { getByTestId } = render(<AddSitesLayout />);
     const nameInput = getByTestId("nameInput");
     const streetInput = getByTestId("streetInput");
@@ -33,22 +32,4 @@ describe("all input responds to user", () => {
     expect(cityInput).toHaveValue("Paris");
     expect(zipInput).toHaveValue("123456");
   });
-
-  // test("select (drop down menu) should change on user input", () => {
-  //   const mockHandleSiteChange = jest.fn();
-  //   var teammember: string[] = [];
-  //   const { getByTestId, getAllByTestId, getAllByRole } = render(
-  //     <TeamMemberDetails
-  //       teammember={teammember}
-  //       handleSiteChange={mockHandleSiteChange}
-  //     />
-  //   );
-  //
-  //   const select = getByTestId("teammemberSelect");
-  //
-  //   const option = select.childNodes[0].childNodes[0];
-  //   fireEvent.change(option, { target: { value: "alexander hamilton" } });
-  //
-  //   expect(mockHandleSiteChange.mock.calls).toHaveLength(1);
-  // });
 });
