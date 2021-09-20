@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProtectedRoute from "../auth/protected-route";
 import Authentication from "../pages/Authentication";
 import Patients from "../pages/Patients";
-import Sites from "../pages/Sites";
+import Sites from "../pages/Sites/Sites";
 import Teams from "../pages/Teams";
 import Trials from "../pages/Trials/Trials";
 import Navbar from "../components/navbar";

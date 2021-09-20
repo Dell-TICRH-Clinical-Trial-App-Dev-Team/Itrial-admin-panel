@@ -5,19 +5,19 @@ const InfoHeading = () => {
   return (
     <Grid container>
       <Grid item xs={4}>
-        <Typography variant="subtitle1">Trial name</Typography>
+        <Typography variant="subtitle1">Site name</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography variant="subtitle1">Start date</Typography>
+        <Typography variant="subtitle1">Site ID</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography variant="subtitle1">Completion data</Typography>
+        <Typography variant="subtitle1">Location</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography variant="subtitle1">Patients Completed</Typography>
+        <Typography variant="subtitle1">Members</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography variant="subtitle2">Status</Typography>
+        <Typography variant="subtitle1">Active Trials</Typography>
       </Grid>
     </Grid>
   );

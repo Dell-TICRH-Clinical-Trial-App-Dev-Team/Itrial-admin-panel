@@ -1,8 +1,13 @@
 import React from "react";
+import SiteTabs from "./SiteTabs";
 import { Typography, makeStyles, Theme } from "../../styles/material-ui";
-import TrialTabs from "./TrialTabs";
 
 const useStyles = makeStyles((theme: Theme) => ({
+  appBar: {
+    height: "64px",
+    borderBottom: "1px solid black",
+    backgroundColor: "white",
+  },
   heading: {
     height: "100px",
     backgroundColor: "white",
@@ -10,17 +15,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Trials = () => {
+const Sites = () => {
   const classes = useStyles();
 
   return (
     <div>
+      {/*FIXME: Add App Bar*/}
+      <div className={classes.appBar}>App bar</div>
+
       <div className={classes.heading}>
-        <Typography variant="h1">Trials</Typography>
+        <Typography variant="h1">Sites</Typography>
       </div>
-      <TrialTabs />
+      <SiteTabs />
     </div>
   );
 };
 
-export default Trials;
+export default Sites;

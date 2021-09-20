@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Toolbar,
-  makeStyles,
-  Theme,
-} from "@material-ui/core";
+import { Toolbar, makeStyles, Theme } from "@material-ui/core";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/test_logo.png";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -18,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   appBar: {
     boxShadow: "none",
-    borderBottom: "1px solid lightgrey", // do we have a certain "lightgrey"?
+    borderBottom: "1px solid #D5E1E8",
     backgroundColor: "white",
     paddingLeft: "7.4vw",
   },
@@ -26,8 +22,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     textDecoration: "none",
     color: "black",
     margin: theme.spacing(2),
-    padding: '8px 5px',
-    borderRadius: '2px',
+    padding: "8px 5px",
+    borderRadius: "2px",
     "&:hover": {
       backgroundColor: theme.palette.background.default,
     },
@@ -39,16 +35,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
   },
   right: {
-    marginRight: '7.4vw'
+    marginRight: "7.4vw",
   },
   spacing: {
     paddingRight: theme.spacing(10),
   },
   logo: {
-     maxWidth: 40,
+    maxWidth: 40,
   },
   hidden: {
-    display: 'none',
+    display: "none",
   },
 }));
 
@@ -59,27 +55,43 @@ function Navbar() {
   return (
     <nav className={classes.appBar}>
       <Toolbar className={classes.styleStripper}>
-          <Link to="/">
-            <img src={logo} alt="iTrial" className={classes.logo} />
-          </Link>
-          <span className={classes.left}></span>
-          <div className={ isAuthenticated ? classes.spacing : classes.hidden }>
-            <NavLink to="/trials" className={classes.link} activeClassName={classes.active}>
-              Trials
-            </NavLink>
-            <NavLink to="/sites" className={classes.link} activeClassName={classes.active}>
-              Sites
-            </NavLink>
-            <NavLink to="/teams" className={classes.link} activeClassName={classes.active}>
-              Team
-            </NavLink>
-            <NavLink to="/patients" className={classes.link} activeClassName={classes.active}>
-              Patients
-            </NavLink>
-          </div>
-          <div className={classes.right}>
-            { isAuthenticated ? <UserDropdown /> : <LoginButton /> }
-          </div>
+        <Link to="/">
+          <img src={logo} alt="iTrial" className={classes.logo} />
+        </Link>
+        <span className={classes.left}></span>
+        <div className={isAuthenticated ? classes.spacing : classes.hidden}>
+          <NavLink
+            to="/trials"
+            className={classes.link}
+            activeClassName={classes.active}
+          >
+            Trials
+          </NavLink>
+          <NavLink
+            to="/sites"
+            className={classes.link}
+            activeClassName={classes.active}
+          >
+            Sites
+          </NavLink>
+          <NavLink
+            to="/teams"
+            className={classes.link}
+            activeClassName={classes.active}
+          >
+            Team
+          </NavLink>
+          <NavLink
+            to="/patients"
+            className={classes.link}
+            activeClassName={classes.active}
+          >
+            Patients
+          </NavLink>
+        </div>
+        <div className={classes.right}>
+          {isAuthenticated ? <UserDropdown /> : <LoginButton />}
+        </div>
       </Toolbar>
     </nav>
   );

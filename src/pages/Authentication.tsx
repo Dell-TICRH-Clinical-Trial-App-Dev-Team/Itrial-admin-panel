@@ -1,59 +1,36 @@
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import Activate from "./AuthenticationPages/Activate";
-import Login from "./AuthenticationPages/Login";
-
 const Authentication = () => {
-  let { path } = useRouteMatch();
-
   const [message, setMessage] = useState("");
   const serverUrl = process.env.REACT_APP_SERVER_LOCAL_URL;
 
   const { getAccessTokenSilently, user } = useAuth0();
 
   const callApi = async () => {
-    try {
-      const response = await fetch(`${serverUrl}/`);
+    const response = await fetch(`${serverUrl}/`);
 
-      const responseData = await response.json();
+    const responseData = await response.json();
 
-      setMessage(responseData);
-    } catch (error) {
-      setMessage(error.message);
-    }
+    setMessage(responseData);
   };
 
   const callSecureApi = async () => {
-    try {
-      const token = await getAccessTokenSilently();
+    const token = await getAccessTokenSilently();
 
-      const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    const response = await fetch(`${serverUrl}/auth?email=${user?.email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-      const responseData = await response.json();
+    const responseData = await response.json();
 
-      setMessage(responseData);
-    } catch (error) {
-      setMessage(error.message);
-    }
+    setMessage(responseData);
   };
 
   return (
     <div>
-      <Switch>
-        <Route path={`${path}/activate`}>
-          <Activate />
-        </Route>
-        <Route path={`${path}/login`}>
-          <Login />
-        </Route>
-      </Switch>
       <div className="container">
         <h1>Authentication</h1>
         <p>Test accessing the API</p>
