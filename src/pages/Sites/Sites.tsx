@@ -20,9 +20,6 @@ const Sites = () => {
 
   return (
     <div>
-      {/*FIXME: Add App Bar*/}
-      <div className={classes.appBar}>App bar</div>
-
       <div className={classes.heading}>
         <Typography variant="h1">Sites</Typography>
       </div>
