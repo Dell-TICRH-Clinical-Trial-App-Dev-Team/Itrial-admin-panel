@@ -44,9 +44,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   spacing: {
     paddingRight: theme.spacing(10),
   },
-  navlink: {
-    display: 'block'
-  },
   logo: {
      maxWidth: 40,
   },
