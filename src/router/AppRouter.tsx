@@ -1,37 +1,22 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ProtectedRoute from "../auth/protected-route";
-import AuthenticationButton from "../components/authentication-button";
-
 import Authentication from "../pages/Authentication";
+
+import Trials from "../pages/Trials/Trials";
 import AddTrialsLayout from "../pages/Trials/AddTrial/AddTrialsLayout";
 import Sites from "../pages/Sites/Sites";
 import AddSitesLayout from "../pages/Sites/AddSite/AddSitesLayout";
-import Trials from "../pages/Trials/Trials";
-import Patients from "../pages/Patients";
 import Teams from "../pages/Teams";
-
+import Patients from "../pages/Patients";
 import Greetings from "../components/Greetings";
+
+import Navbar from "../components/navbar";
 
 export default function AppRouter() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-            <span> </span>
-            <Link to="/authenticate">Authenticate</Link>
-            <span> </span>
-            <Link to="/trials">Trials</Link>
-            <span> </span>
-            <Link to="/sites">Sites</Link>
-          </li>
-          <li>
-            <AuthenticationButton></AuthenticationButton>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
       {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
       <Switch>

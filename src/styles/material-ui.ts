@@ -1,4 +1,5 @@
 import Typography from "@material-ui/core/Typography";
+import { Toolbar } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -34,6 +35,7 @@ export {
   KeyboardArrowRightIcon,
   Paper,
   SatelliteOutlined,
+  Toolbar,
   Button,
   IconButton,
   TextField,
