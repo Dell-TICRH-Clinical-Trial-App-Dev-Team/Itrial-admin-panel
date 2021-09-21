@@ -1,5 +1,6 @@
 import React from "react";
 import SiteTabs from "./SiteTabs";
+
 import { Typography, makeStyles, Theme } from "../../styles/material-ui";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -17,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Sites = () => {
   const classes = useStyles();
-
   return (
     <div>
       <div className={classes.heading}>

@@ -18,6 +18,7 @@ const Trials = () => {
       <div className={classes.heading}>
         <Typography variant="h1">Trials</Typography>
       </div>
+
       <TrialTabs />
     </div>
   );
