@@ -1,5 +1,5 @@
 import React from "react";
-import { Toolbar, makeStyles, Theme } from "@material-ui/core";
+import { Toolbar, makeStyles, Theme } from "../styles/material-ui";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/test_logo.png";
 import { useAuth0 } from "@auth0/auth0-react";
